@@ -1,6 +1,6 @@
 # Summary
 
-* [Webアプリケーション教科書](README.md)
+* [Webを支える技術](README.md)
 * [Web](web/README.md)
    * [歴史](web/li_shi.md)
    * [Webの用途](web/web306e_yong_tu.md)
