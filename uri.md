@@ -88,24 +88,28 @@ URIには、ASCII文字集合の一部の文字（アルファベット、数字
 Webでは、リソースを一意に指し示す識別子としてURIが使われ、外部からのリンクを含め、すべてのリソースへのアクセスはURIを使って行われる。ということは、ある情報をWebでリソースとして公開した後、そのリソースのURIを変更してしまうと、そのリソースはWeb上では「行方不明」になってしまうことになる。
 つまり、究極的には、リソースに対するURIは未来永劫にわたって不変であることが望ましい。Web開発者は、リソースを公開する前に、そのURIの寿命が可能な限り長くなるようにURIを慎重に設計し、またURIの維持管理をすべきなのである。
 
-参考ページ: Cool URIs don’t change (日本語訳: クールなURIは変わらない)
-どういうときにURIが変わってしまうのか
+参考ページ: [Cool URIs don’t change](http://www.w3.org/Provider/Style/URI.html.en) (日本語訳: [クールなURIは変わらない](http://www.kanzaki.com/docs/Style/URI))
+
+### どういうときにURIが変わってしまうのか
 ありがちな例をいくつか挙げてみよう。
-サーバ機のリプレースでWebサーバのホスト名が変わってしまった
-http://server1.example.jp/ → http://server2.example.jp/
-Webサーバ上で、公開しているファイルの名前を変更した
-http://example.jp/foo.html → http://example.jp/bar.html
-Javaで作られていたWebアプリケーションをRubyで再実装した
-http://example.jp/servlet/LoginServlet → http://example.jp/login.rb
-よりよいURIを設計するには
-実装依存の情報、時間が経てば変化する可能性のある情報を含めないようにする
-http://example.jp/  (example.jpという組織がある限り不変)
-サーバ管理技術で server1, server2 といったサーバ名はURIから隠蔽できる
-http://example.jp/foo.html (ファイル名を変更してもURIを変えないようにできる)
-http://example.jp/login (Webアプリケーションの実装言語によらず、ログイン機能があるかぎり不変)
-http://example.jp/2014/10/16 (2014年10月16日に公開された情報。情報の公開日は時間がたっても不変)
-http://example.jp/news/latest (最新のニュース)
-http://twitter.com/kunishi/status/13211 (ユーザkunishiの、ID番号13211のツイート。kunishiがTwitterに登録していて、ツイートを消したりしない限り不変)
-できる限り、URIはリソースをシンプルに表現するように考える
-どうしてもURIを変更しなければならないときは
+
+* サーバ機のリプレースでWebサーバのホスト名が変わってしまった
+  * http://server1.example.jp/ → http://server2.example.jp/
+* Webサーバ上で、公開しているファイルの名前を変更した
+  * http://example.jp/foo.html → http://example.jp/bar.html
+* Javaで作られていたWebアプリケーションをRubyで再実装した
+  * http://example.jp/servlet/LoginServlet → http://example.jp/login.rb
+
+### よりよいURIを設計するには
+* 実装依存の情報、時間が経てば変化する可能性のある情報を含めないようにする
+  * http://example.jp/  (example.jpという組織がある限り不変)
+    * サーバ管理技術で server1, server2 といったサーバ名はURIから隠蔽できる
+  * http://example.jp/foo.html (ファイル名を変更してもURIを変えないようにできる)
+  * http://example.jp/login (Webアプリケーションの実装言語によらず、ログイン機能があるかぎり不変)
+  * http://example.jp/2014/10/16 (2014年10月16日に公開された情報。情報の公開日は時間がたっても不変)
+  * http://example.jp/news/latest (最新のニュース)
+  * http://twitter.com/kunishi/status/13211 (ユーザkunishiの、ID番号13211のツイート。kunishiがTwitterに登録していて、ツイートを消したりしない限り不変)
+* できる限り、URIはリソースをシンプルに表現するように考える
+
+### どうしてもURIを変更しなければならないときは
 極力、HTTP リダイレクト（古いURIを新しいURIに転送するHTTPの仕組。後述）を使う。
