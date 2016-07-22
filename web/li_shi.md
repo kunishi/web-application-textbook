@@ -9,5 +9,5 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 
 1993年、イリノイ大学米国立スーパーコンピュータ応用研究所（National Center for Supercomputing Application, NCSA）がブラウザMosaicを公開。本文中に画像を混在させることが可能で、現在のブラウザの原型である。
 
-![](http://gladiator.ncsa.illinois.edu/Images/press-images/mosaic.1.0.2.tif)![](image00.png)
+![](image00.png)
 (NCSA/University of Illinois, [http://www.ncsa.illinois.edu/news/press](http://www.ncsa.illinois.edu/news/press))
