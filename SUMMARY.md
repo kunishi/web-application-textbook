@@ -15,5 +15,5 @@
    * [文字符号化方式](wen_zi_306e_xi_3044/wen_zi_fu_hao_hua_fang_shi.md)
    * [文字コード](wen_zi_306e_xi_3044/wen_zi_30b3_30fc_30c9.md)
    * [Webにおける文字コード](wen_zi_306e_xi_3044/web306b_304a_3051_308b_wen_zi_30b3_30fc_30c9.md)
-* Webアーキテクチャ
+* [Webアーキテクチャ](web-architecture.md)
 
