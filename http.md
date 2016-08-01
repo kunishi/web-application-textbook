@@ -125,7 +125,7 @@ Content-Type: text/html; charset=utf-8
 - レスポンスヘッダ：メッセージの付加情報。リクエストヘッダと同様「名前:値」という形をしている。
   - 上の例では Content-Typeヘッダに `text/html; charset=utf-8` という値が指定されている。
 - レスポンスボディ：メッセージ本体。ない場合もある。レスポンスヘッダとレスポンスボディは空行1つで区切られる。
-  - 上の例ではHTMLデータ「<html><body>I'm WEBrick.</body></html>」がレスポンスボディに置かれている。
+  - 上の例ではHTMLデータ「`<html><body>I'm WEBrick.</body></html>`」がレスポンスボディに置かれている。
 
 ## HTTPメソッド
 - URIで指定した資源に対して行いたい処理を指定
