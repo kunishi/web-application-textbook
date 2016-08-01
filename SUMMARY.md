@@ -22,5 +22,5 @@
 * [クライアントサイドアプリケーション](clientapp.md)
 * [サーバサイドとクライアントサイドの連動](server-and-client-app.md)
 * [ストレージ](storage.md)
-* セキュリティ
+* [セキュリティ](security.md)
 
