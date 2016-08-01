@@ -131,13 +131,13 @@ Content-Type: text/html; charset=utf-8
 - URIで指定した資源に対して行いたい処理を指定
 - 主なHTTPメソッド
   - GET: 指定したURIの情報を取得する
-    - 例：GET http://blog.example.com/1 …URIで指定された記事の内容を取得する
+    - 例：`GET http://blog.example.com/1` …URIで指定された記事の内容を取得する
   - POST: 指定したURIに対する子資源の作成など
-    - 例：POST http://blog.example.com/ … ブログhttp://blog.example.com/ に新しい投稿という子資源を作成する
+    - 例：`POST http://blog.example.com/` … ブログhttp://blog.example.com/ に新しい投稿という子資源を作成する
   - PUT: 資源の更新
-    - 例：PUT http://blog.example.com/1 … ブログの投稿 http://blog.example.com/1 の修正版を投稿する
+    - 例：`PUT http://blog.example.com/1` … ブログの投稿 http://blog.example.com/1 の修正版を投稿する
   - DELETE: 資源の削除
-    - 例：DELETE http://blog.example.com/1 …ブログの投稿 http://blog.example.com/1 を削除する
+    - 例：`DELETE http://blog.example.com/1` …ブログの投稿 http://blog.example.com/1 を削除する
 - HTMLフォームから発行できるHTTPメソッドはGET, POSTのみ
   - これ以外のメソッドを発行する場合は何らかのプログラムを通さなければならない
   - PUT, DELETEをPOSTで代用することもある
