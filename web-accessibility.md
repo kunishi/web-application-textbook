@@ -27,10 +27,10 @@
         - <img src=“sample.jpg” width=“100” height=“100” alt=“サンプル画像”>
         - alt属性: 画像を表示する場合に代わりに表示するテキスト、読み上げソフトで画像の代わりに読み上げたり、点字翻訳ソフトで点字として表示されたりする
         - 機械的に決められない
-            - 写真→<img src=“photo.jpg” alt="岡山県立大学の講堂の写真”>
-            - アイコン→<img src=“icon.png” alt=“*”>
-            - ロゴ→<img src=“logo.png” alt="岡山県立大学”>
-            - 意味のない画像（スペースの調整用など）→<img src=“spacer.jpg” alt=“”>
+            - 写真→`<img src=“photo.jpg” alt="岡山県立大学の講堂の写真”>`
+            - アイコン→`<img src=“icon.png” alt=“*”>`
+            - ロゴ→`<img src=“logo.png” alt="岡山県立大学”>`
+            - 意味のない画像（スペースの調整用など）→`<img src=“spacer.jpg” alt=“”>`
     - 例：色の組み合わせ
         - 健常者の見え方と色覚異常を持つ人の見え方は違う。さらに個人差がある
             - http://www.kanzaki.com/docs/html/color-check
