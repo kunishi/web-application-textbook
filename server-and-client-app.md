@@ -94,7 +94,7 @@ json&lat=34.50165844222924&lon=133.3843445777893
 
 地図やSNSなど、複雑な情報を提供するサイトでは、さらにシンプルな形でデータを利用できるようにしている場合がある。例として、Google MapsのAPI（バージョン3）の利用例を示す。
 
-  ``` html
+``` html
 <script type="text/javascript"> 
   google.maps.event.addDomListener(window, 'load', function() { 
     var map = document.getElementById("gmap"); 
