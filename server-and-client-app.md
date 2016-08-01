@@ -36,7 +36,7 @@
 
 実際に使う場合は、Internet Explorer 5・6など、古いブラウザに対応させるためのプログラムを書かなければならないが、ここでは簡単のため省略する。
 
-```
+``` javascript
 // XMLHttpRequestオブジェクトの生成
 var xhr = new XMLHttpRequest();
 
