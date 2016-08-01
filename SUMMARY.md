@@ -21,4 +21,5 @@
 * [HTML](html.md)
 * [クライアントサイドアプリケーション](clientapp.md)
 * [サーバサイドとクライアントサイドの連動](server-and-client-app.md)
+* ストレージ
 
