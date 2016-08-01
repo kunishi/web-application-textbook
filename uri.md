@@ -21,6 +21,10 @@ Web上に置かれた情報に、プログラムから簡単にアクセスで�
 ## URI (Uniform Resource Identifier)
 * インターネット上のリソースの「名前」（識別子, identifier）
   * インターネット上のリソースのURIは、すべてインターネット上で一意に定まる。
+  * URL (Uniform Resource Locator) と URN (Uniform Resouce Name) の総称
+    - URN : ドメイン名とは独立にリソースにIDを振る方法
+        - 例: urn:isbn:9784774142043
+        - 現代のWebではほとんど使われない（URI = URL と思ってほぼ差し支えない）
   * 現在のインターネットでは、URL（Uniform Resource Locator）とほぼ同義であると考えて良い。
   * URIはWebで主に使われているが、Webに限った考え方ではない。Web以外の通信でも使うことができるし、パソコンやスマートフォンでアプリケーション内部から別のアプリケーションを起動する際にも用いられることがある。
 * 例
