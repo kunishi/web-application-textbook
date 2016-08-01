@@ -127,13 +127,14 @@ Content-Type: text/html; charset=utf-8
   - 上の例ではHTMLデータ「<html><body>I'm WEBrick.</body></html>」がレスポンスボディに置かれている。
 
 ## HTTPメソッド
-URIで指定した資源に対して行いたい処理を指定
-主なHTTPメソッド
-GET: 指定したURIの情報を取得する
-例：GET http://blog.example.com/1 …URIで指定された記事の内容を取得する
-POST: 指定したURIに対する子資源の作成など
-例：POST http://blog.example.com/ … ブログ http://blog.example.com/ に新しい投稿という子資源を作成する
-PUT: 資源の更新
+- URIで指定した資源に対して行いたい処理を指定
+- 主なHTTPメソッド
+  - GET: 指定したURIの情報を取得する
+    - 例：GET http://blog.example.com/1 …URIで指定された記事の内容を取得する
+  - POST: 指定したURIに対する子資源の作成など
+    - 例：POST http://blog.example.com/ … ブログ
+    - http://blog.example.com/ に新しい投稿という子資源を作成する
+  - PUT: 資源の更新
 例：PUT http://blog.example.com/1 … ブログの投稿 http://blog.example.com/1 の修正版を投稿する
 DELETE: 資源の削除
 例：DELETE http://blog.example.com/1 …ブログの投稿 http://blog.example.com/1 を削除する
