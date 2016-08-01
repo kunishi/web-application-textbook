@@ -23,5 +23,5 @@
 * [サーバサイドとクライアントサイドの連動](server-and-client-app.md)
 * [ストレージ](storage.md)
 * [セキュリティ](security.md)
-* Webアプリケーションのセキュリティ
+* [Webアプリケーションのセキュリティ](security-on-webapp.md)
 
