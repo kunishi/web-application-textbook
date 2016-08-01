@@ -132,46 +132,50 @@ Content-Type: text/html; charset=utf-8
   - GET: 指定したURIの情報を取得する
     - 例：GET http://blog.example.com/1 …URIで指定された記事の内容を取得する
   - POST: 指定したURIに対する子資源の作成など
-    - 例：POST http://blog.example.com/ … ブログ
-    - http://blog.example.com/ に新しい投稿という子資源を作成する
+    - 例：POST http://blog.example.com/ … ブログhttp://blog.example.com/ に新しい投稿という子資源を作成する
   - PUT: 資源の更新
-例：PUT http://blog.example.com/1 … ブログの投稿 http://blog.example.com/1 の修正版を投稿する
-DELETE: 資源の削除
-例：DELETE http://blog.example.com/1 …ブログの投稿 http://blog.example.com/1 を削除する
-HTMLフォームから発行できるHTTPメソッドはGET, POSTのみ
-これ以外のメソッドを発行する場合は何らかのプログラムを通さなければならない
-PUT, DELETEをPOSTで代用することもある
-ステータスコード
-3桁の数字
-1xx: 処理中…処理が継続していることを示す。
-クライアントはそのままリクエストを継続するなどの処理を行う
-2xx: リクエスト成功…リクエストが成功したことを示す
-200 OK: リクエスト成功。GETに対してリクエストが成功した場合は、レスポンスボディにその資源の内容が入る。
-3xx: リダイレクト。他の資源への転送
-クライアントはレスポンスヘッダ中のLocationヘッダを参照して、新しい資源に対するリクエストを行う
-301 Moved Permanently: リソースの恒久的な移動
-4xx: クライアントエラー…原因はクライアント側のリクエストにある
-404 Not Found: リソースの不在
-5xx: サーバエラー…原因はサーバ側にある
-500 Internal Server Error: サーバ側に何らかの異常が起こっている
-リクエストメッセージ、レスポンスメッセージの代表的なヘッダ
-Date: Tue, 06 Jul 2010 03:21:05 GMT … メッセージを作成した日時
-Location: www.example.com … リクエストを送るサーバ名が www.example.com である
-Content-Type: text/html; charset=utf-8 … メッセージのボディの内容を表す。この例ではHTML形式のテキスト（text/html）で、文字エンコーディングがUTF-8であることを表している。
-Content-Length: 5538 … メッセージボディのバイト数が5538バイトである
-Authorization: Basic dXNlcjpwYXNzd29yZA== … 資源にパスワードによる認証が必要な場合、認証に必要なユーザ名とパスワードを送信する。この例では認証方式（Basic認証）とユーザ名、パスワード（dXNlcjpwYXNzd29yZA==の部分。ユーザ名とパスワードをBase64エンコーディングと呼ばれる方式で符号化している。この例では user:password という文字列をエンコードしている）
-Webで扱われるデータ
+    - 例：PUT http://blog.example.com/1 … ブログの投稿 http://blog.example.com/1 の修正版を投稿する
+  - DELETE: 資源の削除
+    - 例：DELETE http://blog.example.com/1 …ブログの投稿 http://blog.example.com/1 を削除する
+- HTMLフォームから発行できるHTTPメソッドはGET, POSTのみ
+  - これ以外のメソッドを発行する場合は何らかのプログラムを通さなければならない
+  - PUT, DELETEをPOSTで代用することもある
+
+## ステータスコード
+- 3桁の数字
+  - 1xx: 処理中…処理が継続していることを示す。
+  - クライアントはそのままリクエストを継続するなどの処理を行う
+  - 2xx: リクエスト成功…リクエストが成功したことを示す
+    - 200 OK: リクエスト成功。GETに対してリクエストが成功した場合は、レスポンスボディにその資源の内容が入る。
+  - 3xx: リダイレクト。他の資源への転送
+    - クライアントはレスポンスヘッダ中のLocationヘッダを参照して、新しい資源に対するリクエストを行う
+    - 301 Moved Permanently: リソースの恒久的な移動
+  - 4xx: クライアントエラー…原因はクライアント側のリクエストにある
+    - 404 Not Found: リソースの不在
+  - 5xx: サーバエラー…原因はサーバ側にある
+    - 500 Internal Server Error: サーバ側に何らかの異常が起こっている
+
+## リクエストメッセージ、レスポンスメッセージの代表的なヘッダ
+
+- Date: Tue, 06 Jul 2010 03:21:05 GMT … メッセージを作成した日時
+- Location: www.example.com … リクエストを送るサーバ名が www.example.com である
+- Content-Type: text/html; charset=utf-8 … メッセージのボディの内容を表す。この例ではHTML形式のテキスト（text/html）で、文字エンコーディングがUTF-8であることを表している。
+- Content-Length: 5538 … メッセージボディのバイト数が5538バイトである
+- Authorization: Basic dXNlcjpwYXNzd29yZA== … 資源にパスワードによる認証が必要な場合、認証に必要なユーザ名とパスワードを送信する。この例では認証方式（Basic認証）とユーザ名、パスワード（dXNlcjpwYXNzd29yZA==の部分。ユーザ名とパスワードをBase64エンコーディングと呼ばれる方式で符号化している。この例では user:password という文字列をエンコードしている）
+
+## Webで扱われるデータ
 サーバとクライアントでデータ形式について合意さえ取れていれば（すなわちサーバとクライアントが共に分かる形式のデータであれば）、どんなデータでも扱うことができる。現在よく使われるデータは次のようなものがある。
 
-テキスト形式
-ブラウザで表示させるテキスト…HTML, XHTML
-主にブラウザで表示させず、プログラムで処理することを主目的とするテキスト…Atom, RSS, JSON
-画像…Jpeg, GIF, PNGなど
-音声…MP3 (MPEG Audio Layer-3), MPEG4-AACなど
-動画…MPEG4, H.264, WebMなど
-TCPコネクションの継続（Keep alive）
-Keep alive
-１まとまりのHTTPリクエストの間TCPコネクションを切らない
-HTTP 1.1ではこれがデフォルトの挙動になっている
-TCPハンドシェイクの時間を短縮→通信の高速化
-クライアント、サーバのいずれかから Connection: close をヘッダで送信するまでTCPコネクションを継続
+- テキスト形式
+  - ブラウザで表示させるテキスト…HTML, XHTML
+  - 主にブラウザで表示させず、プログラムで処理することを主目的とするテキスト…Atom, RSS, JSON
+- 画像…Jpeg, GIF, PNGなど
+- 音声…MP3 (MPEG Audio Layer-3), MPEG4-AACなど
+- 動画…MPEG4, H.264, WebMなど
+
+## TCPコネクションの継続（Keep alive）
+- Keep alive
+  - １まとまりのHTTPリクエストの間TCPコネクションを切らない
+  - HTTP 1.1ではこれがデフォルトの挙動になっている
+  - TCPハンドシェイクの時間を短縮→通信の高速化
+  - クライアント、サーバのいずれかから Connection: close をヘッダで送信するまでTCPコネクションを継続
