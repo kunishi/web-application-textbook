@@ -17,6 +17,9 @@
 
 ## REST (Representational State Transfer)
 - ネットワークシステムのアーキテクチャスタイルのひとつ
+- 2000年にロイ・フィールディング（Roy Fielding)が、Webという極めて大規模なシステムがなぜ成立し、これほど成功したのかについて分析し、博士論文としてまとめた
+  - [Architectural Styles and the Design of Network-based Software Architectures](http://www.ics.uci.edu/%7Efielding/pubs/dissertation/top.htm)
+  - Roy Fielding：Apache httpdなどの実装に関わり、HTTP 1.0, HTTP 1.1の仕様策定にも関与
 - 現代のWebの最重要アーキテクチャスタイル
 - 以下の6つのアーキテクチャスタイルを合わせた複合アーキテクチャスタイル
   - クライアント・サーバ
