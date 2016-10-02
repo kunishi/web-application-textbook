@@ -14,6 +14,7 @@
   - MVC (Model-View-Controller)
   - Layers
   - Pipes and Filters
+
 ## REST (Representational State Transfer)
 - ネットワークシステムのアーキテクチャスタイルのひとつ
 - 現代のWebの最重要アーキテクチャスタイル
