@@ -1,6 +1,6 @@
 # Summary
 
-* [Webを支える技術](introduction.md)
+* [Webを支える技術](preliminaries.md)
 * [Webアーキテクチャ](web-architecture.md)
 * [URI](uri.md)
 * [HTTP](http.md)
