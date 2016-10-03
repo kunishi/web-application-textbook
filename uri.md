@@ -4,20 +4,6 @@
 Web上に置かれた情報に、プログラムから簡単にアクセスできるようにするには?
 →Web上に置かれた情報各々に、プログラムで処理しやすい「名前」をつけよう
 
-## リソース (Resource)
-インターネット関連の国際標準規格を定める組織であるIETF（http://www.ietf.org/）の文書RFC3986には、リソース(資源)について次のような説明がある。
-
-> This specification does not limit the scope of what might be a resource; rather, the term "resource" is used in a general sense for whatever might be identified by a URI.  Familiar examples include an electronic document, an image, a source of information with a consistent purpose (e.g., "today's weather report for Los Angeles"), a service (e.g., an HTTP-to-SMS gateway), and a collection of other resources.  A resource is not necessarily accessible via the Internet; e.g., human beings, corporations, and bound books in a library can also be resources.  Likewise, abstract concepts can be resources, such as the operators and operands of a mathematical equation, the types of a relationship (e.g., "parent" or "employee"), or numeric values (e.g., zero, one, and infinity).
-> [この仕様はリソースであるかもしれないことに関する範囲を制限しません。 むしろ、「リソース」という用語は一般的な意味ではURIによって特定されることなら何でもに使用されます。 身近な例は一貫した目的(例えば、「ロサンゼルスのための今日の気象レポート」)、サービス(例えば、HTTPからSMSへのゲートウェイ)、および他のリソースの収集で電子化文書、イメージ、情報源を含んでいます。 リソースは必ずインターネットを通してアクセス可能であるというわけではありません。 また、例えば、図書館の人間、会社、および製本簿はリソースであるかもしれません。 同様に、抽象概念はリソースであるかもしれません、数学の方程式、関係(例えば、「親」か「従業員」)、または数値(例えば、ゼロ、1、および無限)のタイプのオペレータやオペランドなどのように。]
-
-非常に抽象的な説明だが、「他と区別可能な、ひとまとまりの情報」と考えてよいだろう。この講義で扱うのは、Web上（あるいはインターネット上）に置かれたリソースである。
-
-### リソースに関して留意すべき点
-* 1つのリソースが複数の表現を持つことがある
-  * 例：リソース「ロサンジェルスの今日の天気情報」は、HTMLページ、PDF、画像など、いろいろな表現で提供される可能性がある
-* リソースは時間の経過に従って状態が変化する
-  * 例：リソース「ロサンジェルスの今日の天気情報」は、朝には晴れだったが、昼には曇りになっているかもしれない
-
 ## URI (Uniform Resource Identifier)
 * インターネット上のリソースの「名前」（識別子, identifier）
   * インターネット上のリソースのURIは、すべてインターネット上で一意に定まる。
