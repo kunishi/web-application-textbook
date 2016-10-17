@@ -9,68 +9,70 @@ Web上に置かれた情報に、プログラムから簡単にアクセスで�
   * インターネット上のリソースのURIは、すべてインターネット上で一意に定まる。
   * URL (Uniform Resource Locator) と URN (Uniform Resouce Name) の総称
     - URN : ドメイン名とは独立にリソースにIDを振る方法
-        - 例: urn:isbn:9784774142043
+        - 例: `urn:isbn:9784774142043`
         - 現代のWebではほとんど使われない（URI = URL と思ってほぼ差し支えない）
   * 現在のインターネットでは、URL（Uniform Resource Locator）とほぼ同義であると考えて良い。
   * URIはWebで主に使われているが、Webに限った考え方ではない。Web以外の通信でも使うことができるし、パソコンやスマートフォンでアプリケーション内部から別のアプリケーションを起動する際にも用いられることがある。
 * 例
-  * http://www.ietf.org/rfc/rfc2396.txt
-  * http://pubinfo.oka-pu.ac.jp/searchApp/viewSyllabus.php?id=1642
-  * ftp://ftp.is.co.za/rfc/rfc1808.txt
-  * mailto:John.Doe@example.com
-  * tel:+1-816-555-1212
+  * `http://www.ietf.org/rfc/rfc2396.txt`
+  * `http://pubinfo.oka-pu.ac.jp/searchApp/viewSyllabus.php?id=1642`
+  * `ftp://ftp.is.co.za/rfc/rfc1808.txt`
+  * `mailto:John.Doe@example.com`
+  * `tel:+1-816-555-1212`
 
 ## URIの利用例
 * ブラウザで表示するページの指定
-* HTML中のリンクの指定（例: <a href=”http://www.example.com/”>example.com</a>）
-* スマートフォンのアプリ内でURI “tel:+1-816-555-1212” にアクセスすると、電話アプリで +1-816-555-1212 に電話をかける。
+* HTML中のリンクの指定（例: `<a href=”http://www.example.com/”>example.com</a>`）
+* スマートフォンのアプリ内でURI `tel:+1-816-555-1212` にアクセスすると、電話アプリで `+1-816-555-1212` に電話をかける。
 
 ## URIの構文
 URIはいくつかの構成要素からなっている。詳細な構文はRFC3986に厳密に定められている。
 
 * URIスキーム：URIが利用するプロトコルなど。
-* ホスト名：その資源を提供するコンピュータ名。FQDNまたはIPアドレスである場合が多い。
-* ユーザ情報：URIの指し示すリソースにアクセスするのにユーザ認証が必要となる場合、正当なユーザ名とパスワードをURIに含めることができる。
-* ポート番号：URIにアクセスするためのTCPポート番号。
-  * URIスキームで指定されたプロトコルのデフォルトポート番号の場合は省略可（例: HTTPなら80番の場合は省略可）
-* パス：ホスト内での資源の識別子。最も簡単な場合、資源（ファイル）への絶対パスになる。
+  * `mailto`や`tel`など、以下の構文に従わず、別途構文が定められているURIスキームもある。
+* オーソリティ(authority):各資源の名前の一意性を保証する単位。
+  * ホスト名：その資源を提供するコンピュータ名。FQDNまたはIPアドレスである場合が多い。
+  * ユーザ情報：URIの指し示すリソースにアクセスするのにユーザ認証が必要となる場合、正当なユーザ名とパスワードをURIに含めることができる。
+  * ポート番号：URIにアクセスするためのTCPポート番号。
+    * URIスキームで指定されたプロトコルのデフォルトポート番号の場合は省略可（例: HTTPなら80番の場合は省略可）
+* パス：オーソリティ内での資源の識別子。最も簡単な場合、資源（ファイル）への絶対パスになる。
 * クエリパラメータ：検索サービスに対する検索キーワードの指定など、クライアントからサーバに何らかのパラメータを渡したい場合に用いられる。
 * URIフラグメント：リソース内部の、さらに細かい部分の指定に用いられる。
 
 ### 例
-http://www.ietf.org/rfc/rfc2396.txt
+`http://www.ietf.org/rfc/rfc2396.txt`
 
-* URIスキーム：http
-* ホスト名：www.ietf.org
-* パス：/rfc/rfc2396.txt
+* URIスキーム：`http`
+* ホスト名：`www.ietf.org`
+* パス：`/rfc/rfc2396.txt`
 
-foo://bar:baz@example.com:8042/over/there?name=ferret&encoding=utf8#nose
+`foo://bar:baz@example.com:8042/over/there?name=ferret&encoding=utf8#nose`
 
-* URIスキーム：foo
-* ユーザ情報：bar:baz （ユーザID: bar, パスワード: baz）
-* ホスト名： example.com
-* ポート番号： 8042
-* パス： /over/there
-* クエリパラメータ： name=ferret&encoding=utf8
-* URIフラグメント： nose
+* URIスキーム：`foo`
+* ユーザ情報：`bar:baz` （ユーザID: `bar`, パスワード: `baz`）
+* ホスト名： `example.com`
+* ポート番号： `8042`
+* パス： `/over/there`
+* クエリパラメータ： `name=ferret&encoding=utf8`
+* URIフラグメント： `nose`
 
 ### URI構文に関する補足
-* URIスキームとそれ以下の部分は “://” で区切られる。
-* ユーザ情報中のユーザIDとパスワードは “:” で区切られる。
-* ユーザ情報とホスト名は “@” で区切られる。
-* ホスト名とポート番号は “:” で区切られる。
+* URIスキームとそれ以下の部分は `://` で区切られる。
+* ユーザ情報中のユーザIDとパスワードは `:` で区切られる。
+* ユーザ情報とホスト名は `@` で区切られる。
+* ホスト名とポート番号は `:` で区切られる。
 * ユーザ情報、ポート番号は省略可。
-* パスとクエリパラメータは “?” で区切られる。
+* パスとクエリパラメータは `?` で区切られる。
 * クエリパラメータについて
   * 一つのパラメータは「パラメータ名=値」という形式
-  * 複数のパラメータを並べる場合は “&” で区切る。
-* URIフラグメントとその前の部分は “#” で区切られる。
+  * 複数のパラメータを並べる場合は `&` で区切る。
+* URIフラグメントとその前の部分は `#` で区切られる。
 
 ## URIと文字
 URIには、ASCII文字集合の一部の文字（アルファベット、数字、一部の記号）しか使えない。空白記号や日本語の文字などをURIに含めたい場合は、%エンコーディングという方式を用いて、URIに適した文字列に変換しなければならない。%エンコーディングの詳細はRFC3986に書かれているが、簡単に言うと「バイトごとに 0x○○ → %○○ と変換」という処理を行う。例を以下に示す。
 
-* 空白記号（0x40）→ %40
-* 「あ」という文字（UTF-8 では 0xE3 0x81 0x82 の3バイトで表現される）→ %E3%81%82
+* 空白記号（0x40）→ `%40`
+* 「あ」という文字（UTF-8 では 0xE3 0x81 0x82 の3バイトで表現される）→ `%E3%81%82`
 
 %エンコーディングを使わずに、直接URIの中でUnicode文字集合の文字を使えるように拡張した規格（Internationalized Resource Identifier, IRI）もあるが、まだ普及には至っていない。
 
@@ -84,21 +86,21 @@ Webでは、リソースを一意に指し示す識別子としてURIが使わ�
 ありがちな例をいくつか挙げてみよう。
 
 * サーバ機のリプレースでWebサーバのホスト名が変わってしまった
-  * http://server1.example.jp/ → http://server2.example.jp/
+  * `http://server1.example.jp/` → `http://server2.example.jp/`
 * Webサーバ上で、公開しているファイルの名前を変更した
-  * http://example.jp/foo.html → http://example.jp/bar.html
+  * `http://example.jp/foo.html` → `http://example.jp/bar.html`
 * Javaで作られていたWebアプリケーションをRubyで再実装した
-  * http://example.jp/servlet/LoginServlet → http://example.jp/login.rb
+  * `http://example.jp/servlet/LoginServlet` → `http://example.jp/login.rb`
 
 ### よりよいURIを設計するには
 * 実装依存の情報、時間が経てば変化する可能性のある情報を含めないようにする
-  * http://example.jp/  (example.jpという組織がある限り不変)
-    * サーバ管理技術で server1, server2 といったサーバ名はURIから隠蔽できる
-  * http://example.jp/foo.html (ファイル名を変更してもURIを変えないようにできる)
-  * http://example.jp/login (Webアプリケーションの実装言語によらず、ログイン機能があるかぎり不変)
-  * http://example.jp/2014/10/16 (2014年10月16日に公開された情報。情報の公開日は時間がたっても不変)
-  * http://example.jp/news/latest (最新のニュース)
-  * http://twitter.com/kunishi/status/13211 (ユーザkunishiの、ID番号13211のツイート。kunishiがTwitterに登録していて、ツイートを消したりしない限り不変)
+  * `http://example.jp/`  (`example.jp`という組織がある限り不変)
+    * サーバ管理技術で `server1`, `server2` といったサーバ名はURIから隠蔽できる
+  * `http://example.jp/foo.html` (ファイル名を変更してもURIを変えないようにできる)
+  * `http://example.jp/login` (Webアプリケーションの実装言語によらず、ログイン機能があるかぎり不変)
+  * `http://example.jp/2014/10/16` (2014年10月16日に公開された情報。情報の公開日は時間がたっても不変)
+  * `http://example.jp/news/latest` (最新のニュース)
+  * `http://twitter.com/kunishi/status/13211` (ユーザ`kunishi`の、ID番号`13211`のツイート。`kunishi`がTwitterに登録していて、ツイートを消したりしない限り不変)
 * できる限り、URIはリソースをシンプルに表現するように考える
 
 ### どうしてもURIを変更しなければならないときは
