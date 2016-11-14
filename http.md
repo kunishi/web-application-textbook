@@ -64,6 +64,7 @@
 * このように、HTTPメソッドの`GET`, `POST`, `PUT`, `DELETE`は、データに対する代表的な操作であるCRUD(create, read, update, delete)に対応している。
 * そのほかのHTTPメソッド
   * `HEAD`, `OPTIONS`, `TRACE`, `CONNECT`, `PATCH`
+  * `PATCH`は2010年に発行された[RFC5789](https://tools.ietf.org/html/rfc5789)で新しく追加されたHTTPメソッドである
 * HTMLフォームから発行できるHTTPメソッドはGET, POSTのみ
   * これ以外のメソッドを発行する場合は何らかのプログラムを通さなければならない
   * PUT, DELETEをPOSTで代用することもある
