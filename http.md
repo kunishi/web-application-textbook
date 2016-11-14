@@ -1,6 +1,6 @@
-# HTTP
+# HTTP(Hypertext Transfer Protocol)
 
-## HTTP: HyperText Transfer Protocol
+## プロトコルの概要
 
 * HyperText = ハイパーテキスト（ハイパーメディアの前身となった考え方。複数のテキスト文書をリンクで結んだもの。Webが開発された当初は、Webページにはテキストしか使えなかったため、この言葉が使われたものと思われる）
 * アプリケーション層のプロトコルの一つ。トランスポート層にはTCPを想定
@@ -144,7 +144,7 @@ Content-Type: text/html; charset=utf-8
 どれも「名前: 値」という形式をしている。このような欄が必要に応じていくつもヘッダ内に置かれる。
 
 * `Date: Tue, 06 Jul 2010 03:21:05 GMT` … メッセージを作成した日時
-* `Location: www.example.com` … リクエストを送るサーバ名が `www.example.com` である
+* `Host: www.example.com` … リクエストを送るサーバ名が `www.example.com` である
 * `Content-Type: text/html; charset=utf-8` … メッセージのボディの内容を表す。この例ではHTML形式のテキスト（`text/html`）で、文字エンコーディングがUTF-8であることを表している。
 * `Content-Length: 5538` … メッセージボディのバイト数が5538バイトである
 * `Authorization: Basic dXNlcjpwYXNzd29yZA==` … 資源にパスワードによる認証が必要な場合、認証に必要なユーザ名とパスワードを送信する。この例では認証方式（Basic認証）とユーザ名、パスワード（`dXNlcjpwYXNzd29yZA==`の部分。ユーザ名とパスワードを[Base64エンコーディング](https://ja.wikipedia.org/wiki/Base64)と呼ばれる方式で符号化している。この例では `user:password` という文字列をエンコードしている）
@@ -166,17 +166,18 @@ Content-Type: image/jpeg
 
 これを受け取ったクライアントは、ボディをBase64方式でデコードし、元の画像データを取り出す。
 
-## Webで扱われるデータ
+### 200以外のステータスコード
 
-サーバとクライアントでデータ形式について合意さえ取れていれば（すなわちサーバとクライアントが共に分かる形式のデータであれば）、どんなデータでも扱うことができる。現在よく使われるデータは次のようなものがある。
+ステータスコードが200以外の場合、ボディには、処理結果の詳細情報が埋め込まれる。何も埋め込まれない、というケースは稀である。
 
-* テキスト形式
-  * ブラウザで表示させるテキスト…HTML, XHTML
-  * 主にブラウザで表示させず、プログラムで処理することを主目的とするテキスト…Atom, RSS, JSON
-* 画像…Jpeg, GIF, PNGなど
-* 音声…MP3 \(MPEG Audio Layer-3\), MPEG4-AACなど
-* 動画…MPEG4, H.264, WebMなど
+例えば、`http://example.com/index.html` に対して `GET` メソッドを送ったところ、対応するリソースがなかった場合、次のようなレスポンスメッセージが返ってくる。
 
+```
+HTTP/1.1 404 Not Found
+Content:Type: text/html
+
+<html><body>該当するページが見つかりません</body></html>
+```
 
 ## TCPコネクションの継続（Keep alive）
 
