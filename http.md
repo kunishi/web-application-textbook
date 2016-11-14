@@ -96,7 +96,7 @@
 ```
 GET /index.html HTTP/1.1
 Host: www.example.com:8000
-　
+
 ```
 
 #### レスポンスメッセージ
