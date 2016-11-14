@@ -179,6 +179,47 @@ Content:Type: text/html
 <html><body>該当するページが見つかりません</body></html>
 ```
 
+### GETパラメータの扱い
+
+検索サイトでは、検索キーワードなど種々の検索パラメータをGETパラメータとしてサーバに渡す場合が多い。このGETパラメータの受け渡しの例を示す。
+
+例えば、`http://example.com/?q=foo` というURIに対して`GET`メソッドを送ることを考える。この場合`?`以降の`q=foo`がサーバに渡すパラメータであり、GETパラメータと呼ばれる。このとき、リクエストメッセージは次のようになる。
+
+```
+GET /?q=foo HTTP/1.1
+Host: example.com
+
+```
+
+ただし、実装上、URIの長さには2,000文字などの上限が存在するので、上限を越えるような長いURIにアクセスする場合は、次に示すPOSTパラメータで代用することがある。
+
+### POSTパラメータの扱い
+
+GETパラメータ以外に、POSTメソッドを使ってサーバにパラメータを受け渡すことがある。ほとんどのHTMLフォームではこの方法が用いられている。
+
+例えば、`http://example.com/login`に次のようなHTMLで表されるログインフォームがあったとしよう。
+
+``` 
+<form action="POST" target="/list">
+  ユーザID: <input type="text" name="id">
+  パスワード: <input type="password" name="pass">
+  <input type="submit">
+</form>
+```
+
+ブラウザで表示させると次のようになる。![](https://www.evernote.com/l/AALF9icGLWJFeqMEdxmmqagK-hCBDjcV4kwB/image.png)
+
+ユーザIDの欄に `foo` を、パスワードの欄に `bar` をそれぞれ入力して「送信」ボタンをクリックしたとする。すると、次のように、URI `http://example.com/list` に`POST`メソッドが発行されることになる。
+
+```
+POST /list HTTP/1.1
+Host: example.com
+
+id=foo&pass=bar
+```
+
+このように`POST`メソッドでパラメータをサーバに渡すときは、パラメータがボディに埋め込まれる。このパラメータを**POSTパラメータ**という。
+
 ## TCPコネクションの継続（Keep alive）
 
 * Keep alive
