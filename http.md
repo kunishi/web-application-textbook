@@ -220,7 +220,9 @@ id=foo&pass=bar
 
 このように`POST`メソッドでパラメータをサーバに渡すときは、パラメータがボディに埋め込まれる。このパラメータを**POSTパラメータ**という。
 
-## TCPコネクションの継続（Keep alive）
+## HTTP 1.0からHTTP 1.1へ、そしてHTTP2へ
+
+### TCPコネクションの継続（Keep alive）
 
 * Keep alive
   * １まとまりのHTTPリクエストの間TCPコネクションを切らない
