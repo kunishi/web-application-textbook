@@ -22,13 +22,13 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 
 ![](/web/image03.png)
 
-\([http:\/\/commons.wikimedia.org\/wiki\/File%3AWorldWideWeb.1.png](http://commons.wikimedia.org/wiki/File%3AWorldWideWeb.1.pngより引用)\)
+([http://commons.wikimedia.org/wiki/File%3AWorldWideWeb.1.png](http://commons.wikimedia.org/wiki/File%3AWorldWideWeb.1.pngより引用))
 
 1993年、イリノイ大学米国立スーパーコンピュータ応用研究所（National Center for Supercomputing Application, NCSA）がブラウザMosaicを公開。本文中に画像を混在させることが可能で、現在のブラウザの原型である。
 
 ![](/web/image00.png)
 
-\(NCSA\/University of Illinois, [http:\/\/www.ncsa.illinois.edu\/News\/Images\/](http://www.ncsa.illinois.edu/News/Images/)\)
+(NCSA/University of Illinois, [http://www.ncsa.illinois.edu/News/Images/](http://www.ncsa.illinois.edu/News/Images/))
 
 ### Webの用途
 
@@ -39,13 +39,10 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 ### Webを支える技術
 
 * HTTP, URI, HTML
-* インターネットの諸技術（TCP\/IP, DNS, …）
+* インターネットの諸技術（TCP/IP, DNS, …）
 * ハイパーメディア（Hyper Media）
-
   * 画像、音声、映像、テキストなどをリンクで相互に結びつけて構成された情報媒体。リンクをたどることで、非線形的に情報を取得していくことが可能である。1965年にTed Nelsonによって提案された概念。
-
 * 分散システム（Distributed System）
-
   * 複数のコンピュータを組み合わせて、処理を分散させる情報システム
 
 
@@ -53,7 +50,7 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 
 ## インターネット（the Internet）
 
-* TCP\/IP（またはUDP\/IP）を標準プロトコルとする世界的規模のネットワーク
+* TCP/IP（またはUDP/IP）を標準プロトコルとする世界的規模のネットワーク
   * TCP: Transmission Control Protocol
   * UDP: User Datagram Protocol
   * IP: Internet Protocol
@@ -62,8 +59,8 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 ### 歴史
 
 * 1962年、米・国防総省でインターネットの原型となる分散ネットワークの研究が開始される
-* 1969年、インターネットの原型が誕生\(ARPANET\)
-* 1970年代半ば、TCP\/IPが開発される→UNIXに実装
+* 1969年、インターネットの原型が誕生(ARPANET)
+* 1970年代半ば、TCP/IPが開発される→UNIXに実装
 * 1983年、軍事部門と研究ネットワークが分離される
 * 1984年、日本でTCP\/IPベースのネットワークが誕生（JUNET）
 
@@ -78,7 +75,7 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 
 <p><a href="https://commons.wikimedia.org/wiki/File:IP_stack_connections.svg#/media/File:IP_stack_connections.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/IP_stack_connections.svg/1200px-IP_stack_connections.svg.png" alt="IP stack connections.svg"></a><br>By <a href="https://en.wikipedia.org/wiki/User:Kbrose" class="extiw" title="en:User:Kbrose">en:User:Kbrose</a> - Prior Wikipedia artwork by en:User:Cburnett, <a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Creative Commons Attribution-Share Alike 3.0">CC 表示-継承 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=1831900">https://commons.wikimedia.org/w/index.php?curid=1831900</a></p>
 
-\([http:\/\/ja.wikipedia.org\/wiki\/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:IP\_stack\_connections.svg](http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:IP_stack_connections.svg)\)
+([http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:IP_stack_connections.svg](http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:IP_stack_connections.svg))
 
 ### IPアドレス
 
@@ -86,18 +83,18 @@ IP上で、ネットワーク上の機器を識別するために使用する番
 
 <p><a href="https://commons.wikimedia.org/wiki/File:Ipv4_address_ja.svg#/media/File:Ipv4_address_ja.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Ipv4_address_ja.svg/1200px-Ipv4_address_ja.svg.png" alt="Ipv4 address ja.svg"></a><br>By Original: <a href="https://en.wikipedia.org/wiki/User:Indeterminate" class="extiw" title="en:User:Indeterminate">en:User:Indeterminate</a> Japanese translation: <a href="//commons.wikimedia.org/w/index.php?title=User:Lusheeta&amp;action=edit&amp;redlink=1" class="new" title="User:Lusheeta (page does not exist)">User:Lusheeta</a> - <a href="//commons.wikimedia.org/wiki/File:Ipv4_address.svg" title="File:Ipv4 address.svg">File:Ipv4_address.svg</a>, パブリック・ドメイン, <a href="https://commons.wikimedia.org/w/index.php?curid=7688865">https://commons.wikimedia.org/w/index.php?curid=7688865</a></p>
 
-\([http:\/\/ja.wikipedia.org\/wiki\/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Ipv4\_address\_ja.svg](http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Ipv4_address_ja.svg)\)
+([http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Ipv4_address_ja.svg](http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Ipv4_address_ja.svg))
 
 ### FQDNとDNS
 
-TCP\/IP上の通信では、すべてIPアドレスを用いて通信相手を指定する。しかし一方で、IPアドレスは単なる数字の羅列であり、人間には極めて覚えにくい。そのため、人間に覚えやすい形式でインターネット上のホスト名を指定する方法として、FQDN（Fully Qualified Domain Name）が使われている。google.com, ja.wikipedia.org, www.example.jpなどはFQDNの例である。
+TCP/IP上の通信では、すべてIPアドレスを用いて通信相手を指定する。しかし一方で、IPアドレスは単なる数字の羅列であり、人間には極めて覚えにくい。そのため、人間に覚えやすい形式でインターネット上のホスト名を指定する方法として、FQDN（Fully Qualified Domain Name）が使われている。`google.com`, `ja.wikipedia.org`, `www.example.jp`などはFQDNの例である。
 
 FQDNとIPアドレスの対応づけを管理するインターネットサービスがDNS（Domain Name Service）である。DNSサービスを提供するコンピュータ（DNSサーバ）に対して
 
 * FQDNを検索すると、対応するIPアドレスを
 * IPアドレスを検索すると、対応するFQDNを（もしあれば）
 
-それぞれ返してくれる。ブラウザなどで http:\/\/www.example.jp\/ のようにFQDNを用いたURIを指定することができるのは、ソフトウェアの内部でDNSサービスを利用してIPアドレスを取得しているためである。DNSサービスの仕組みは、本講義の範疇を越えるので省略する。
+それぞれ返してくれる。ブラウザなどで `http://www.example.jp/` のようにFQDNを用いたURIを指定することができるのは、ソフトウェアの内部でDNSサービスを利用してIPアドレスを取得しているためである。DNSサービスの仕組みは、本講義の範疇を越えるので省略する。
 
 ## 文字の扱い
 
@@ -110,7 +107,7 @@ Webに関する技術を取り上げるとき、文字をコンピュータで�
 * ASCII…英大文字・小文字、数字、記号など
 * ISO 8859…欧米やロシアなどで使われる文字を集めたもの
 * JIS X 0208, JIS X 0213…日本語（漢字を含む）で使われる文字を集めたもの
-* Unicode, ISO\/IEC 10646…世界で使われるすべての文字からなる文字集合。両者はほぼ同じものと考えてよい。
+* Unicode, ISO/IEC 10646…世界で使われるすべての文字からなる文字集合。両者はほぼ同じものと考えてよい。
 
 ### 文字符号化方式
 
@@ -120,7 +117,7 @@ Webに関する技術を取り上げるとき、文字をコンピュータで�
 * ISO-8859-1, ISO-8859-2, … ISO 8859に対応するもの
 * ISO-2022-JP … JIS X 0208に対応するもの。いわゆるJIS文字コード。
 * EUC-JP … JIS X 0208 に対応するもの。いわゆるEUC文字コード。
-* Shift\_JIS … JIS X 0208 に対応するもの。いわゆるシフトJIS文字コード。
+* Shift_JIS … JIS X 0208 に対応するもの。いわゆるシフトJIS文字コード。
 * UTF-8, UTF-16 … いずれも Unicode に対応するもの。
 
 ### 文字コード
