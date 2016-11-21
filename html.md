@@ -8,6 +8,12 @@
 
 [神崎正英氏による日本語でよくまとめられたページがある](http://www.kanzaki.com/docs/html/htminfo-ex1.html)ので、詳しくはこのページを参照されたい。
 
+CERNでWebが開発された当初から、Webページの記述方式としてHTMLが考案され、使用されていた。これを基に、1995年にIETFによってHTML 2.0が([RFC1866](http://www.ietf.org/rfc/rfc1866.txt))公開され、その後W3C(World Wide Web Consortium)によって1997年1月に[HTML 3.2](http://www.w3.org/TR/REC-html32)が、1997年8月に[HTML 4.0](http://www.w3.org/TR/REC-html40)が、1999年12月に[HTML 4.01](http://www.w3.org/TR/html401)が、2000年1月に[XHTML 1.0](http://www.w3.org/TR/xhtml1)(2002年8月に改訂）が、それぞれ国際標準（勧告）として公開されている。
+
+ここまでのHTMLは、SGML(Standard Generalized Markup Language)やXML(Extensible Markup Language)という汎用マークアップ言語に基づいて定義されていた。しかし、Webをアプリケーション基盤として使用するニーズが増大する中で、HTMLも、Webブラウザで用いるデータ構造として再定義するという流れが強まり、この方向で、SGMLやXMLには基づかない新たなマークアップ言語として、2014年10月に[HTML 5](http://www.w3.org/TR/html5/)が、2016年11月に[HTML 5.1](https://www.w3.org/TR/html51/)がそれぞれW3Cの勧告として公開されている。
+
+本稿で用いる例は原則としてHTML 5の文法に基づいている。ただし、読者の理解を助けるため、HTML 5のW3C勧告とは異なり、構文から意味へと説明を進めている。
+
 ### HTMLの構文
 
 HTML5で書かれたテキスト（HTML文書という）の例を次に示す。
@@ -15,14 +21,14 @@ HTML5で書かれたテキスト（HTML文書という）の例を次に示す�
 ``` html
 <!DOCTYPE html>
 <html>
-   <head>
-    <meta charset="utf-8">
-	<title>はじめてのHTML文書</title>
-   </head>
-   <body>
-	<p>Hello world!</p>
-	<a href="http://example.jp/index.html">example.jpトップページ</a>
-   </body>
+<head>
+  <meta charset="utf-8">
+  <title>はじめてのHTML文書</title>
+</head>
+<body>
+  <p>Hello world!</p>
+  <a href="http://example.jp/index.html">example.jpトップページ</a>
+</body>
 </html>
 ```
 
@@ -36,15 +42,10 @@ HTML5で書かれたテキスト（HTML文書という）の例を次に示す�
 
 通常要素と空要素を合わせて**要素**(element)という。
 
+上の例の通り、HTML文書には、通常要素である`html`要素が1つだけ、必ず置かれる。そして、通常要素は、その内容に別の要素を複数個含んでも良い。結果として、HTML文書は`html`要素を根とし、要素を節点とする木を表現している。
+
 要素の中には、その要素の性質や振る舞いを制御する項目を開始タグの内側に記述しているものがある。上の例では`<a href="http://example.jp/index.html">example.jpトップページ</a>`が該当する。この`href=""`の部分を**属性**といい、`=`の前を**属性名**、後ろを**属性値**という。これは`a`要素（アンカー、目印を表す要素）に`href`属性を加えることでリンクを表現している。属性値は必ず一重引用符`'`か二重引用符`"`で囲まなければならない。なお、属性によっては属性名しか記述しないものもある。(例: `<dl compact>`)
 
-- 例：`<title>〜</title>`…ページのタイトル、`<p>〜</p>`…段落
-  - 開始タグ（`<html>`, `<title>`, `<head>`など）、終了タグ（`</html>`, `</title>`, `</head>`など）
-    - ほとんどの場合、開始タグと終了タグは対にして用いる
-  - 開始タグと終了タグで囲まれた部分：要素
-    - 要素は入れ子にすることができる（例：`<html><head>〜</head><body><p>〜</p></body></html>`）
-- 他ページへのリンク：`<a href="リンク先のURL">`リンクを張る文字列`</a>`
-  - `href="..."`の部分を属性という。属性は要素の開始タグに付けることができる。hrefの部分を属性名、"..." の部分を属性値という。
 - HTML文書
   - html要素のみからなる文書
   - html要素の中に他の要素が入れ子状に含まれる
