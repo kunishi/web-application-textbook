@@ -89,7 +89,7 @@ Host: example.jp
 
 ![](https://www.evernote.com/l/AAI0WafUc5FGwayWnUI2aUzowZXG00bEP28B/image.png)
 
-`userid`フィールドに`taro`、`password`フィールドに`aD1eibah`と入力して`login`ボタンをクリックすると、`action`属性のURL`/profile`（ここにはパスしか書かれていない。ページのURIからパスを除いた `http://example.jp` にパス `/profile` を加えた `http://example.jp/profile` が完全なURIになる）に`POST`メソッドが発行される。その際、フィールドの名前と値が`POST`パラメータとしてリクエストメッセージに含まれる。
+`userid`フィールドに`taro`、`password`フィールドに`aD1eibah`と入力して`login`ボタンをクリックすると、`action`属性のURL`/profile`（ここにはパスしか書かれていない。ページのURIからパスを除いた `http://example.jp` にパス `/profile` を加えた `http://example.jp/profile` が完全なURIになる）に`POST`メソッド（`form`要素の`method`属性の値）が発行される。その際、フィールドの名前と値が`POST`パラメータとしてリクエストメッセージに含まれる。
 
 ```
 POST /profile HTTP/1.1
@@ -100,6 +100,22 @@ userid=taro&password=aD1eibah
 ```
 
 なお、`password`フィールドを表す`input`要素は`type`属性が`password`と指定されており、通常ブラウザでは、入力内容は`*`などに置き換えて表示される。しかし、上のリクエストメッセージを見ると分かるように、通信されるデータには`password`フィールドの値がそのまま埋め込まれており、通信内容を盗聴されるとパスワードが第三者に知られてしまう。したがって、このように秘匿すべき情報を送信するときは、通信路の暗号化などの対策が必須となる。
+
+`form`要素の`method`属性には、歴史的経緯により、`GET`と`POST`しか指定できない。つまり、通常、ブラウザからは`GET`メソッドと`POST`メソッドしか発行することができないのである。`form`要素の`method`属性に`GET`を指定した例を次に示す。
+
+``` html
+<form action="/search" method="GET">
+  キーワード: <input type="text" name="keyword" id="keyword"><br>
+  <input type="submit" value="search">
+</form>
+```
+
+この`form`要素の1つ目の`input`要素（`keyword`フィールド）に`programming`と入力し、2つ目の`input`要素（`search`ボタン）をクリックすると、次のように、`keyword`フィールドの値が`GET`パラメータとしてURIに埋め込まれ、HTTPリクエストが発行される。
+
+```
+GET /search?keyword=programming HTTP/1.1
+Host: example.jp
+```
 
 ### HTMLの意味
 
