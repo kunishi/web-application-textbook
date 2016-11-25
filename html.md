@@ -75,7 +75,7 @@ Host: example.jp
 
 #### form要素
 
-`form`要素はHTMLフォームを表す。例として、次のHTMLコードを考える。
+`form`要素はHTMLフォームを表す。例として、`http://example.jp/login`に次のHTMLコードが含まれていたとする。
 
 ``` html
 <form action="/profile" method="POST">
@@ -85,6 +85,21 @@ Host: example.jp
 </form>
 ```
 
+`http://example.jp/login`をブラウザで表示すると、次のような入力フォームになる。`form`要素の子要素である3つの`input`要素がそれぞれ1つ目の入力フォーム（`userid`フィールド）、2つ目の入力フォーム（`password`フィールド）、`login`ボタンに対応している。
+
+![](https://www.evernote.com/l/AAI0WafUc5FGwayWnUI2aUzowZXG00bEP28B/image.png)
+
+`userid`フィールドに`taro`、`password`フィールドに`aD1eibah`と入力して`login`ボタンをクリックすると、`action`属性のURL`/profile`（ここにはパスしか書かれていない。ページのURIからパスを除いた `http://example.jp` にパス `/profile` を加えた `http://example.jp/profile` が完全なURIになる）に`POST`メソッドが発行される。その際、フィールドの名前と値が`POST`パラメータとしてリクエストメッセージに含まれる。
+
+```
+POST /profile HTTP/1.1
+Host: example.jp
+Content-Type: application/x-www-form-urlencoded
+
+userid=taro&password=aD1eibah
+```
+
+なお、`password`フィールドを表す`input`要素は`type`属性が`password`と指定されており、通常ブラウザでは、入力内容は`*`などに置き換えて表示される。しかし、上のリクエストメッセージを見ると分かるように、通信されるデータには`password`フィールドの値がそのまま埋め込まれており、通信内容を盗聴されるとパスワードが第三者に知られてしまう。したがって、このように秘匿すべき情報を送信するときは、通信路の暗号化などの対策が必須となる。
 
 ### HTMLの意味
 
