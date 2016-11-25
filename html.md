@@ -45,13 +45,46 @@ HTML5で書かれたテキスト（HTML文書という）の例を次に示す�
 * `<title>はじめてのHTML文書</title>`は文書のタイトルを表す
 * `<p>Hello world!</p>`は段落を表す
 * `<body>〜</body>`はブラウザで表示される部分を表す
-* `<<meta charset="utf-8">`は、この文書の文字コードが`utf-8`であることを表す
+* `<meta charset="utf-8">`は、この文書の文字コードが`utf-8`であることを表す
 
 上の例の通り、HTML文書には、通常要素である`html`要素が1つだけ、必ず置かれる。そして、通常要素は、その内容に別の要素を複数個含んでも良い。結果として、HTML文書は`html`要素を根とし、要素を節点とする木を表現している。
 
 要素の中には、その要素の性質や振る舞いを制御する項目を開始タグの内側に記述しているものがある。上の例では`<a href="http://example.jp/index.html">example.jpトップページ</a>`が該当する。この`href=""`の部分を**属性**といい、`=`の前を**属性名**、後ろを**属性値**という。これは`a`要素（アンカー、目印を表す要素）に`href`属性を加えることでリンクを表現している。属性値は必ず一重引用符`'`か二重引用符`"`で囲まなければならない。なお、属性によっては属性名しか記述しないものもある。(例: `<dl compact>`)
 
 HTML文書の1行目には必ず、`<!DOCTYPE html>`という記述を置く必要がある。これはもともとSGMLやXMLにおける文書型宣言(Document Type Declaration)に由来する記法であるが、Webブラウザの実装として、この記述が1行目にないと古いHTMLで書かれた文書だと解釈して、文書の整形等でレガシーな振る舞いをする場合がある。そのため、HTMLがSGMLやXMLとは関係なくなった現在でも、この記述を文書の先頭に置く必要が残っている。
+
+### HTMLの例と振る舞い
+
+Webアプリケーションの視点から重要なHTMLコードとその振る舞いについて述べる。
+
+#### a要素
+
+以下のように`a`要素を用いるとリンクを表す。
+
+``` html
+<a href="http://example.jp/index.html">example.jpトップページ</a>
+```
+
+`a`要素の内容である「example.jpトップページ」の箇所がリンクになり、ここをクリックすると`href`属性に示されているURI `http://example.jp/index.html`に`GET`メソッドが発行される。
+
+```
+GET /index.html HTTP/1.1
+Host: example.jp
+
+```
+
+#### form要素
+
+`form`要素はHTMLフォームを表す。例として、次のHTMLコードを考える。
+
+``` html
+<form action="/profile" method="POST">
+  userid: <input type="text" name="userid" id="userid"><br>
+  password: <input type="password" name="password" id="password"><br>
+  <input type="submit" value="login">
+</form>
+```
+
 
 ### HTMLの意味
 
