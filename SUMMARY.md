@@ -13,5 +13,5 @@
 * [Webアプリケーションのセキュリティ](security-on-webapp.md)
 * [Webアクセシビリティ](web-accessibility.md)
 * [Webアプリケーションの性能向上](performance-tuning-on-webapp.md)
-* [webアプリケーションのアーキテクチャ](webapp-architecture.md)
+* [Webアプリケーションのアーキテクチャ](webapp-architecture.md)
 
