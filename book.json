@@ -1,5 +1,6 @@
 {
   "pdf": {
     "fontFamily": "IPAGothic"
-  }
+  },
+  "plugins": ["page-numbering"]
 }
