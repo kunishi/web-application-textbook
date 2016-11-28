@@ -25,4 +25,27 @@ WebブラウザとWebサーバとで構成されるアプリケーションの�
 
 2から4の処理は、最も古くはCommon Gateway Interface(CGI, [RFC3875](https://tools.ietf.org/html/rfc3875)として国際標準となっている)を利用した極めて素朴な実現方法が主流であったが、Webアプリケーションの複雑化とともに抽象化が進み、現代のWebアプリケーションフレームワークでは多くの部分を自動的にやってくれるようになっている。
 
-6のみ、簡単な例を示しておこう。
+6のみ、簡単な例を示しておこう。メニュー項目にマウスを当てるとサブメニューが表示、外すとサブメニューが消えるという例である。ベースになるHTMLは次のようになっているとする。
+
+``` html
+<ul id=“menu”>
+  <li>メニュー1
+    <ul>
+      <li>サブメニュー1</li>
+      <li>サブメニュー2</li>
+    </ul>
+  </li>
+  …
+</ul>
+```
+
+このHTMLに対して、次のようなJavaScriptプログラムを実行する。これは[jQuery](https://jquery.com/)というJavaScriptライブラリを利用したプログラムであり、簡単にいうと、`id`属性の値が`menu`である要素の下にある`li`要素(`$('#menu li')`）に対し、マウスを当てると子要素の`ul`要素を表示(`show()`)、マウスを外すと子要素の`ul`要素を隠す(`hide()`)、というイベント監視関数を登録する、という処理を行っている。
+
+``` javascript
+$(document).ready(function() {
+  $(‘#menu li’).hover(
+    function() { $(this).children(‘ul’).show(); },
+    function() { $(this).children(‘ul’).hide(); }
+  );
+});
+```
