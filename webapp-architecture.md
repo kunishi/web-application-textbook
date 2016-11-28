@@ -95,10 +95,3 @@ xhr.onreadystatechange = processXhrChange;
 xhr.open("GET", "http://example.jp/data.html");
 xhr.send();
 ```
-
-#### Ajaxに存在する危険性 ####
-
-* 通信中のURIが表示されない
-* 通信が任意のタイミングで発生する
-* 通信の有無を確認しにくい
-* ユーザが気がつかない間に情報を盗まれる危険がある
