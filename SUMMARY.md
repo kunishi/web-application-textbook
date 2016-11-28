@@ -7,8 +7,6 @@
 * [HTTP](http.md)
 * [HTML](html.md)
 * [Webアプリケーションのアーキテクチャ](webapp-architecture.md)
-* [クライアントサイドアプリケーション](clientapp.md)
-* [サーバサイドとクライアントサイドの連動](server-and-client-app.md)
 * [ストレージ](storage.md)
 * [セキュリティ](security.md)
 * [Webアプリケーションのセキュリティ](security-on-webapp.md)
