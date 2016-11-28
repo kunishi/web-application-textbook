@@ -53,3 +53,52 @@ $(document).ready(function() {
 ```
 
 ### Ajax
+
+* ブラウザにあらかじめ用意されている標準機能だけでWebの非同期通信を実現する手法
+	* DOM, JavaScript, XMLHttpRequest(XHR)のみ
+	* プラグインなどの追加機能を必要としない
+	* ブラウザ上で使われる技術
+		* モバイルアプリではプログラミングの制限が少ないので、もっと自由に非同期通信ができる（のでAjaxは使われない）
+* XMLHttpRequest
+	* ブラウザに組み込まれたプログラミング言語(JavaScriptなど)でHTTP通信を行うためのAPI
+	* Microsoftが提案・実装した技術
+	* もともとはInternet Explorerでしか使えなかったが、その後ほかのブラウザでも実装が進み、標準で組み込まれるようになった
+* 手順
+	1. ブラウザ→サーバ：Webページのリクエスト
+	2. サーバ→ブラウザ：Webページをレスポンス（Ajaxを利用するJavaScriptが埋め込まれている）
+	3. ブラウザ：Webページの解析、表示、埋め込まれたJavaScriptプログラムを実行→XMLHttpRequestオブジェクトが生成
+	4. XMLHttpRequestオブジェクト→サーバ：追加のデータ（HTML, XML, JSON, etc.）のリクエスト
+	5. サーバ→XMLHttpRequestオブジェクト：追加のデータをレスポンス
+	6. XMLHttpRequestオブジェクト：追加のデータを解析、これに基づきDOMを操作→ブラウザのページ表示が更新
+
+### サンプルプログラム ###
+
+実際に使う場合は、Internet Explorer 5・6など、古いブラウザに対応させるためのプログラムを書かなければならないが、ここでは簡単のため省略する。
+
+``` javascript
+// XMLHttpRequestオブジェクトの生成
+var xhr = new XMLHttpRequest();
+
+// XMLHttpRequestオブジェクトがデータを受け取ったときの処理
+function processXhrChange() {
+  if (xhr.readyState == 4) { // 通信終了
+    if (xhr.status == 200) { // ステータスコード200
+      // ここにDOM操作が入る
+    }
+  }
+}
+
+// XMLHttpRequestオブジェクトに上記の関数を登録
+xhr.onreadystatechange = processXhrChange;
+
+// XMLHttpRequestオブジェクトからGETリクエストを出す
+xhr.open("GET", "http://example.jp/data.html");
+xhr.send();
+```
+
+#### Ajaxに存在する危険性 ####
+
+* 通信中のURIが表示されない
+* 通信が任意のタイミングで発生する
+* 通信の有無を確認しにくい
+* ユーザが気がつかない間に情報を盗まれる危険がある
