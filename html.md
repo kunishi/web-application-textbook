@@ -115,9 +115,12 @@ userid=taro&password=aD1eibah
 ```
 GET /search?keyword=programming HTTP/1.1
 Host: example.jp
+　
 ```
 
 ### HTMLの意味
 
-### CSS
+### モバイル端末とHTML
+
+PCに比べ、モバイル端末には様々なハードウェア上の制約がある。HTMLに関してとりわけ影響が大きいのがディスプレイのサイズである。
 
