@@ -122,5 +122,5 @@ Host: example.jp
 
 ### モバイル端末とHTML
 
-PCに比べ、モバイル端末には様々なハードウェア上の制約がある。HTMLに関してとりわけ影響が大きいのがディスプレイのサイズである。
+PCに比べ、モバイル端末には様々なハードウェア上の制約がある。HTMLに関してとりわけ影響が大きいのがディスプレイのサイズである。以下、Googleが開発者向けに公開している[レスポンシブウェブデザインの基礎](https://developers.google.com/web/fundamentals/design-and-ui/responsive/?hl=ja)という文書を元に、モバイル端末とHTMLの関係について簡単に述べる。
 
