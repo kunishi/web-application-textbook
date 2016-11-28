@@ -58,26 +58,13 @@ $(document).ready(function() {
 
 1999年にMicrosoft社が公開したWebブラウザであるInternet Explorer 5において、ブラウザ内で実行されるプログラム中でHTTPリクエストを発行しレスポンスを受け取るAPIが初めて搭載された。Internet Explorer 5ではActiveXというMicrosoft独自技術向けのAPIであったが、程なく、他のブラウザでもこの機能をJavaScriptのAPIとして搭載するようになった。このAPIを、Internet Explorer 5での名称をそのまま用いて**XMLHTTPRequest**（**XHR**）と呼ぶ。
 
-* ブラウザにあらかじめ用意されている標準機能だけでWebの非同期通信を実現する手法
-	* DOM, JavaScript, XMLHttpRequest(XHR)のみ
-	* プラグインなどの追加機能を必要としない
-	* ブラウザ上で使われる技術
-		* モバイルアプリではプログラミングの制限が少ないので、もっと自由に非同期通信ができる（のでAjaxは使われない）
-* XMLHttpRequest
-	* ブラウザに組み込まれたプログラミング言語(JavaScriptなど)でHTTP通信を行うためのAPI
-	* Microsoftが提案・実装した技術
-	* もともとはInternet Explorerでしか使えなかったが、その後ほかのブラウザでも実装が進み、標準で組み込まれるようになった
-* 手順
-	1. ブラウザ→サーバ：Webページのリクエスト
-	2. サーバ→ブラウザ：Webページをレスポンス（Ajaxを利用するJavaScriptが埋め込まれている）
-	3. ブラウザ：Webページの解析、表示、埋め込まれたJavaScriptプログラムを実行→XMLHttpRequestオブジェクトが生成
-	4. XMLHttpRequestオブジェクト→サーバ：追加のデータ（HTML, XML, JSON, etc.）のリクエスト
-	5. サーバ→XMLHttpRequestオブジェクト：追加のデータをレスポンス
-	6. XMLHttpRequestオブジェクト：追加のデータを解析、これに基づきDOMを操作→ブラウザのページ表示が更新
+XHRを用いると、いったんWebブラウザ上でDOMを構築してページを表示したのち、JavaScriptプログラム中でHTTPリクエストを発行してWebサーバから必要なデータを取得し、これを用いてDOMを更新するというアーキテクチャを考えることができる（本節冒頭の図の右側）。伝統的なWebアプリケーションと比べ、ページ遷移とは非同期的にデータ取得およびページ更新を行うことができる点が大きく異なっている。さらに、このアーキテクチャはDOM, JavaScript, XHRだけで実現でき、特別な拡張機能を必要としないことも利点である。
 
-### サンプルプログラム ###
+このアーキテクチャはGoogle社がGoogle Mapで採用したことで広く知られることとなり、2005年に発表された[Ajax: A New Approach to Web Applications](http://adaptivepath.org/ideas/ajax-new-approach-web-applications/)[^1]という記事をきっかけに “Ajax” と呼ばれるようになった。
 
-実際に使う場合は、Internet Explorer 5・6など、古いブラウザに対応させるためのプログラムを書かなければならないが、ここでは簡単のため省略する。
+[^1]: 日本語訳は http://kentarok.org/translations/ajax など。
+
+XHRを用いたJavaScriptプログラム例を以下に示す。実際には、Internet Explorer 5・6など古いブラウザに対応させるための条件も記述しなければならないが、ここでは簡単のため省略する。
 
 ``` javascript
 // XMLHttpRequestオブジェクトの生成
