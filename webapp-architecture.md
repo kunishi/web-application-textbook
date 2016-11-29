@@ -129,7 +129,7 @@ if (request.status === 200) {
   console.log(request.responseText);
 }
 ```
-(https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests より引用・改変)
+(https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests より引用)
 
 [^1]: JavaScriptという言語の実行モデルが、そもそも逐次的（シングルスレッド）である。
 
