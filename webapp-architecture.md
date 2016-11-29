@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 XHRを用いると、いったんWebブラウザ上でDOMを構築してページを表示したのち、JavaScriptプログラム中でHTTPリクエストを発行してWebサーバから必要なデータを取得し、これを用いてDOMを更新するというアーキテクチャを考えることができる（本節冒頭の図の右側）。伝統的なWebアプリケーションと比べ、ページ遷移とは非同期的にデータ取得およびページ更新を行うことができる点が大きく異なっている。さらに、このアーキテクチャはDOM, JavaScript, XHRだけで実現でき、特別な拡張機能を必要としないことも利点である。
 
-このアーキテクチャはGoogle社がGoogle Mapで採用したことで広く知られることとなり、2005年に発表された[Ajax: A New Approach to Web Applications](http://adaptivepath.org/ideas/ajax-new-approach-web-applications/)[^1]という記事をきっかけに “Ajax” と呼ばれるようになった。
+このアーキテクチャはGoogle社がGoogle Mapで採用したことで広く知られることとなり、2005年に発表された[Ajax: A New Approach to Web Applications](http://adaptivepath.org/ideas/ajax-new-approach-web-applications/)[^1]という記事をきっかけに “Ajax” と呼ばれるようになった。なお、もともとAjaxは“Asynchronous JavaScript+XML”の略だったが、現在は特になんの略称でもないという公式見解になっている。
 
 [^1]: 日本語訳は http://kentarok.org/translations/ajax など。
 
