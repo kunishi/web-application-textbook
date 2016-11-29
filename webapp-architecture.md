@@ -118,14 +118,13 @@ jQuery.ajax({
 
 `jQuery.ajax`関数呼び出しの引数（JSON形式の値）に第一級関数 `function(msg) { alert(msg); }`が書かれているのに気づかれただろうか。`jQuery.ajax`内部では、レスポンスボディを引数としてこの関数を呼び出す。
 
-なぜコールバック関数がAjaxで必要なのだろうか。それはブラウザ上ではJavaScriptプログラムが逐次的に実行されるためである[^1]。仮にコールバック関数を使わずにHTTPリクエストを記述するとどうなるだろうか。以下では`XMLHTTPRequest`を直接用いてHTTPリクエスト`GET /bar/foo.txt`を実行しているが、HTTPリクエストを実際に実行しているコード`request.send(null);`はHTTPレスポンスが返ってくるまで終了しない。つまり、このリクエスト以降の処理はHTTPレスポンスが得られるまで実行されず、ユーザには通信が終了するまでブラウザが停止してしまったように見える。
+なぜコールバック関数がAjaxで必要なのだろうか。それはブラウザ上ではJavaScriptプログラムが逐次的に実行されるためである[^1]。仮にコールバック関数を使わずにHTTPリクエストを記述するとどうなるだろうか。以下では`XMLHTTPRequest`を直接用いてHTTPリクエスト`GET /bar/foo.txt`を実行しているが、HTTPリクエストを実際に実行しているコード`request.send(null);`はHTTPレスポンスが返ってくるまで終了しない。つまり、HTTPレスポンスが返ってくるまでこのJavaScriptプログラムは待ち状態になり、ユーザには通信が終了するまでブラウザが停止してしまったように見える。
 
 ``` javascript
 var request = new XMLHttpRequest();
 request.open('GET', '/bar/foo.txt', false);  // `false` makes the request synchronous
 request.send(null);
 
-// これ以下のプログラムはHTTPレスポンスが返ってきてから実行
 if (request.status === 200) {
   console.log(request.responseText);
 }
