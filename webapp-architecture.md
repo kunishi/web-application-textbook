@@ -105,6 +105,7 @@ jQueryによるDHTMLの例の一部を再掲しよう。
 [^1]: プログラミング言語の用語で**第一級オブジェクト**（first-class object）という。
 
 Ajaxでコールバック関数を用いた例を挙げてみよう。これはjQueryライブラリを用いたAjaxの実装であり、`http://example.jp/some.php`に`POST`メソッドを送り、成功（HTTPステータスコード`200`）のレスポンスを受け取った時に、レスポンスボディをブラウザの`alert`ダイアログで表示する、というものである。
+
 ``` javascript
 jQuery.ajax({
   type: “POST”,
@@ -117,16 +118,23 @@ jQuery.ajax({
 
 `jQuery.ajax`関数呼び出しの引数（JSON形式の値）に第一級関数 `function(msg) { alert(msg); }`が書かれているのに気づかれただろうか。`jQuery.ajax`内部では、レスポンスボディを引数としてこの関数を呼び出す。
 
-- スレッド
-  - シングルスレッド、マルチスレッド
-  - ブラウザはシングルスレッド
-  - 描画を行っている間、ユーザからの操作など、他の処理は受け付けない(待たされる)
-  - 外部にHTTPリクエストを投げると、その応答が返ってくるまでブラウザの処理がすべて止まる
-  - Todo: うまい説明ができるよう考える
-  - 解決策
-    - 非同期処理
-      - JSからHTTPリクエストをさせる際、結果を受信したときに行う処理を一緒に登録する(コールバック関数)
-      - HTTPレスポンスはいつ返ってくるかわからない→コールバック関数もいつ実行されるかわからない
+なぜコールバック関数がAjaxで必要なのだろうか。それはブラウザ上ではJavaScriptプログラムが逐次的に実行されるためである[^1]。仮にコールバック関数を使わずにHTTPリクエストを記述するとどうなるだろうか。以下では`XMLHTTPRequest`を直接用いてHTTPリクエスト`GET /bar/foo.txt`を実行しているが、HTTPリクエストを実際に実行しているコード`request.send(null);`はHTTPレスポンスが返ってくるまで終了しない。つまり、このリクエスト以降の処理はHTTPレスポンスが得られるまで実行されず、ユーザには通信が終了するまでブラウザが停止してしまったように見える。
+
+``` javascript
+var request = new XMLHttpRequest();
+request.open('GET', '/bar/foo.txt', false);  // `false` makes the request synchronous
+request.send(null);
+
+// これ以下のプログラムはHTTPレスポンスが返ってきてから実行
+if (request.status === 200) {
+  console.log(request.responseText);
+}
+```
+(https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Synchronous_and_Asynchronous_Requests より引用・改変)
+
+[^1]: JavaScriptという言語の実行モデルが、そもそも逐次的（シングルスレッド）である。
+
+コールバック関数を使ってAjaxを実装すると、一般にコールバック関数が入れ子になり、プログラムが複雑になりやすい。この問題点を改善した新しいAjaxプログラミングスタイルとして、Facebook社が公開した[React](https://facebook.github.io/react/)が非常に注目を集めている。本稿ではこれ以上の説明は割愛するが、今後重要性が増す技法であろうと予想される。
 
 ### Web API ###
 
