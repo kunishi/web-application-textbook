@@ -133,6 +133,18 @@ if (request.status === 200) {
 
 [^1]: JavaScriptという言語の実行モデルが、そもそも逐次的（シングルスレッド）である。
 
+Ajaxにおけるコールバック関数は、この問題を解決する。以下の例において `jQuery.ajax`関数はHTTPレスポンスが返ってくるのを待たずに終了し、この部分以下の処理が継続される。そして、HTTPレスポンスが返ってきたタイミングで（非同期的に）コールバック関数が実行されるのである。
+
+``` javascript
+jQuery.ajax({
+  type: “POST”,
+  url: “http://example.jp/some.php”,
+  success: function(msg) {
+    alert(msg);
+  }
+});
+```
+
 コールバック関数を使ってAjaxを実装すると、一般にコールバック関数が入れ子になり、プログラムが複雑になりやすい。この問題点を改善した新しいAjaxプログラミングスタイルとして、Facebook社が公開した[React](https://facebook.github.io/react/)が非常に注目を集めている。本稿ではこれ以上の説明は割愛するが、今後重要性が増す技法であろうと予想される。
 
 ### Web API ###
