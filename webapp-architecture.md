@@ -104,8 +104,7 @@ jQueryによるDHTMLの例の一部を再掲しよう。
 
 [^1]: プログラミング言語の用語で**第一級オブジェクト**（first-class object）という。
 
-Ajaxでコールバック関数を用いた例を挙げてみよう。これはjQueryライブラリを用いたAjaxの実装であり、`http://example.jp/some.php`に`POST`メソッドを送り、レスポンスを受け取った時に、レスポンスボディをブラウザの`alert`ダイアログで表示する、というものである。
-
+Ajaxでコールバック関数を用いた例を挙げてみよう。これはjQueryライブラリを用いたAjaxの実装であり、`http://example.jp/some.php`に`POST`メソッドを送り、成功（HTTPステータスコード`200`）のレスポンスを受け取った時に、レスポンスボディをブラウザの`alert`ダイアログで表示する、というものである。
 ``` javascript
 jQuery.ajax({
   type: “POST”,
@@ -115,6 +114,8 @@ jQuery.ajax({
   }
 });
 ```
+
+`jQuery.ajax`関数呼び出しの引数（JSON形式の値）に第一級関数 `function(msg) { alert(msg); }`が書かれているのに気づかれただろうか。`jQuery.ajax`内部では、レスポンスボディを引数としてこの関数を呼び出す。
 
 - スレッド
   - シングルスレッド、マルチスレッド
