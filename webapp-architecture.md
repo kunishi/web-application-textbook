@@ -86,3 +86,54 @@ xhr.onreadystatechange = processXhrChange;
 xhr.open("GET", "http://example.jp/data.html");
 xhr.send();
 ```
+
+### Web API ###
+
+Ajaxを用いたWebアプリケーションでは、Webサーバから取得するデータはHTML形式である必要はなく、HTMLよりプログラム可読性が高い形式であった方が構文解析も容易で、かつデータ転送効率も良い。
+
+このような理由から、XMLや[JSON](https://tools.ietf.org/html/rfc4627)(JavaScript Object Notation)などの形式でデータをWeb経由で取得できるサイトが増えている。このようなデータ提供機能を、一般に**Web API**（Web Application Program Interface）という。
+
+様々なWeb APIを利用すると、種々の情報をあちこちのWebサイトから取得し、これらを組み合わせることで新しいアプリケーションを作ることが容易に可能となる。この手法を**マッシュアップ**（mashup）という。マッシュアップの例としては、先に挙げたGoogle Maps APIの利用例や、TwitterやFacebookのタイムラインを表示するウィジェットを組み合わせてWebページを構成する、といった例が挙げられる。
+
+#### 例: 地理情報の取得 ####
+
+独立行政法人農業・食品産業技術総合研究所（http://www.finds.jp）の提供する簡易逆ジオコーディングサービスの実行例である。
+
+```
+http://www.finds.jp/ws/rgeocode.php?
+json&lat=34.50165844222924&lon=133.3843445777893
+```
+
+このように、緯度・経度をGETパラメータに指定して http://www.finds.jp/ws/rgeocode.php にアクセスすると、以下のように、その位置の都道府県・市町村区名などがXMLやJSONとして返ってくる。このように、ソフトウェアで解析しやすい形で種々のデータを提供するWeb APIが多数存在する。
+
+``` json
+{
+  "status": 200,
+  "result": {
+    "prefecture": {
+      "pcode": 34,
+      "pname": "広島県"
+      },
+(以下略)
+```
+
+#### 例: Google Maps API v3 ####
+
+地図やSNSなど、複雑な情報を提供するサイトでは、さらにシンプルな形でデータを利用できるようにしている場合がある。例として、Google MapsのAPI（バージョン3）の利用例を示す。
+
+``` html
+<script type="text/javascript"> 
+  google.maps.event.addDomListener(window, 'load', function() { 
+    var map = document.getElementById("gmap"); 
+    var options = { 
+      zoom: 16, 
+      center: new google.maps.LatLng(35.686773, 139.68815), 
+      mapTypeId: google.maps.MapTypeId.ROADMAP 
+    }; 
+    new google.maps.Map(map, options); 
+  }); 
+</script>
+
+<!-- この要素内に地図が表示される -->
+<div id="map"></div>
+```
