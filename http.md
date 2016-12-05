@@ -225,6 +225,7 @@ GETパラメータ以外に、POSTメソッドを使ってサーバにパラメ�
 ```
 POST /list HTTP/1.1
 Host: example.com
+Content-Type: application/x-www-form-urlencoded
 
 id=foo&pass=bar
 ```
