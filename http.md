@@ -218,7 +218,8 @@ GETパラメータ以外に、POSTメソッドを使ってサーバにパラメ�
 </form>
 ```
 
-ブラウザで表示させると次のようになるだろう。![](https://www.evernote.com/l/AALF9icGLWJFeqMEdxmmqagK-hCBDjcV4kwB/image.png)
+ブラウザで表示させると次のようになるだろう。
+![](test.png)
 
 ユーザIDの欄に `foo` を、パスワードの欄に `bar` をそれぞれ入力して「送信」ボタンをクリックしたとする。すると、次のように、URI `http://example.com/list` に`POST`メソッドが発行されることになる。
 
