@@ -8,7 +8,7 @@
 * [HTML](html.md)
 * [Webアプリケーションのアーキテクチャ](webapp-architecture.md)
 * [クッキーと認証](storage.md)
-* [セキュリティ](security.md)
+* [TLS](security.md)
 * [Webアプリケーションのセキュリティ](security-on-webapp.md)
 * [Webアクセシビリティ](web-accessibility.md)
 * [Webアプリケーションの性能向上](performance-tuning-on-webapp.md)
