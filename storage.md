@@ -49,6 +49,7 @@ Set-Cookie: SID=31d4d96e407aad42; Path=/; Expires=Sun, 06 Nov 1994 08:49:37 GMT
 * クッキー総数を3000以上扱えること
 
 ## HTTPで規定されている認証方式
+HTTP/1.1には、Basic認証とDigest認証というユーザ認証方式が規定されている（[RFC 2617](https://tools.ietf.org/html/rfc2617)）。
 
 - 実際のニーズ
     - ユーザごとに違う情報を提示したい
