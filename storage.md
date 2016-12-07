@@ -4,7 +4,7 @@
 本章ではまずHTTPクッキーについて述べ、クライアント状態の典型例であるユーザ認証の実現方法をいくつか示す。
 
 ## HTTPクッキー
-**HTTPクッキー**（HTTP cookie）[^1]は、Webサーバ上の情報をWebクライアントに保存しHTTPで利用するための汎用技術であり、これによりHTTPにおいて状態を実現することができる。1994年に、当時大きなシェアを持っていたWebブラウザNetscape Navigatorの開発元であるNetscape Communications社によって提案・実装された。その後IETFによる国際標準化が行われ、現在は[RFC 6265](https://tools.ietf.org/html/rfc6265)が最新版である。
+**HTTPクッキー**（HTTP cookie）[^1]は、Webサーバ上の情報をWebクライアントに保存しHTTPで利用するための汎用技術であり、これによりHTTPにおいて状態を実現することができる。1994年に、当時大きなシェアを持っていたWebブラウザNetscape Navigatorの開発元であるNetscape Communications社によって提案・実装された。その後IETFによる国際標準化が行われ、2011年に発行された[RFC 6265](https://tools.ietf.org/html/rfc6265)が最新版である。
 
 [^1]: クッキーと略されることもある。
 
