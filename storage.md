@@ -89,7 +89,36 @@ Authorization: Basic dGFybzpwYXNzCg==
 Basic認証では、誰でも容易に復号可能な状態で認証情報（ユーザ名とパスワード）がネットワーク上を流れるという問題点がある。したがって、TLSによる通信路の暗号化を併用することが必須となる。
 
 ### Digest認証
-Basic認証よりもセキュアな認証方式として考えられたのがDigest認証である。
+Digest認証では、ユーザ名やパスワードからMD5一方向ハッシュ関数で計算された値（文字列）をHTTPリクエストに含めるため、Basic認証よりはセキュアな認証方式であると言える。
+
+Digest認証でも、最初はまず認証なしのHTTPリクエストを送信し、`401 Unauthorized`のHTTPレスポンスを得る。例は次のようになる。
+
+```
+HTTP/1.1 401 Unauthorized
+WWW-Authenticate: Digest
+       realm="testrealm@host.com",
+       qop="auth,auth-int",
+       nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
+       opaque="5ccc069c403ebaf9f0171e9517f40e41"
+```
+
+`nonce`はタイムスタンプなどからサーバが生成する文字列であり、Webクライアントが認証情報を組み立てるときに用いられる。`opaque`もサーバが生成する文字列であるが、これはそのままHTTPリクエストに埋め込まれ、クライアントの同一性を保証する目的で用いられる。
+
+Basic認証と同様に、これを受け取ると、Webクライアントはユーザにユーザ名とパスワードの入力を求め、それらを元に認証付きのHTTPリクエストを組み立て、サーバに送信する。この際、ユーザから入力されたユーザ名とパスワードのほか、`WWW-Authenticate`へっだに含まれていた`realm`と`nonce`、およびクライアントが生成する文字列`cnonce`などからMD5ハッシュ値を計算し、それを`response`に格納する。例は次のようになる。
+
+```
+Authorization: Digest username="Mufasa",
+       realm="testrealm@host.com",
+       nonce="dcd98b7102dd2f0e8b11d0f600bfb0c093",
+       uri="/dir/index.html",
+       qop=auth,
+       nc=00000001,
+       cnonce="0a4f113b",
+       response="6629fae49393a05397450978507c4ef1",
+       opaque="5ccc069c403ebaf9f0171e9517f40e41"
+```
+
+これを受け取ったサーバは、同様にMD5ハッシュ値を計算し、結果が`response`と一致していれば認証成功となる。
 
 ## HTTPクッキーを用いた認証
 
