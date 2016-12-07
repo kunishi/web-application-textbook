@@ -49,7 +49,7 @@ Set-Cookie: SID=31d4d96e407aad42; Path=/; Expires=Sun, 06 Nov 1994 08:49:37 GMT
 * クッキー総数を3000以上扱えること
 
 ## HTTPで規定されている認証方式
-HTTP/1.1には、Basic認証とDigest認証というユーザ認証方式が規定されている（[RFC 2617](https://tools.ietf.org/html/rfc2617)）。これらはいずれもHTTPクッキーを使わない。
+HTTP/1.1には、**Basic認証**と**Digest認証**というユーザ認証方式が規定されている（[RFC 2617](https://tools.ietf.org/html/rfc2617)）。これらはいずれもHTTPクッキーを使わない。
 
 Basic認証とDigest認証では、いずれも、まず最初に認証なしのHTTPリクエストをサーバに送信し、ステータスコード`401 Unauthorized`のHTTPレスポンスを得る。そして、そのレスポンス中に含まれている情報を用いて認証付きのHTTPリクエストを送信する。
 
