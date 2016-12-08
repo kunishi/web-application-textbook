@@ -120,9 +120,44 @@ Authorization: Digest username="Mufasa",
 
 これを受け取ったサーバは、同様にMD5ハッシュ値を計算し、結果が`response`と一致していれば認証成功となる。
 
-Digest認証の技術的基盤となっているのはMD5アルゴリズムの一方向性（$$H = md5(D)$$において、$$H$$から$$D$$を求めることは事実上できない）であるが、この点に関する脆弱性が発見されており、`response`からユーザ名とパスワードを取得することがかなり容易に行えると考えられる。したがって、Digest認証もBasic認証と同様、通信路の暗号化が必須であると言える。
+Digest認証の技術的基盤となっているのはMD5アルゴリズムの一方向性（データ$$D$$からMD5ハッシュ値$$H = md5(D)$$を計算したとき、$$H$$から$$D$$を求めることは事実上できない）であるが、この点に関する脆弱性が発見されており、`response`からユーザ名とパスワードを取得することがかなり容易に行えると考えられる。したがって、Digest認証もBasic認証と同様、通信路の暗号化が必須であると言える。
 
 ## HTTPクッキーを用いた認証
+現代のWebアプリケーションで最もよく用いられている認証方式は、HTTPクッキーを用いるものである。
+
+この認証方式では、通常、Webサーバが認証のためのフォームを含んだWebページ（ここでは`http://example.jp/login`としよう）を用意しておく。
+
+``` html
+<form action="/service" method="POST">
+  <input type="text" id="username">
+  <input type="password" id="password">
+  <input type="submit" value="ログイン">
+</form>
+```
+
+ここまで何度か見てきたように、このフォームにユーザがユーザ名とパスワードを入力してログインボタンをクリックすると、次のHTTPリクエストがサーバに送信される。
+
+```
+POST /service HTTP/1.1
+Host: example.jp
+Content-Type: application/x-www-form-urlencoded
+
+username=taro&password=pass
+```
+
+WebサーバはHTTPリクエスト中のPOSTパラメータの値を元にユーザ認証を行う。認証が成功すると、Webサーバはこのログインに対して固有の文字列（**セッションID**）を生成し、これをHTTPクッキーとしてWebブラウザに返す。同時に、生成したセッションIDをユーザ名と紐づけてWebサーバ上でも保存しておく。
+
+```
+Set-Cookie: SID=31d4d96e407aad42; Path=/
+```
+
+HTTPクッキーの機能通り、Webブラウザは以降の`example.jp`との接続においてHTTPクッキー`SID=31d4d96e407aad42`をHTTPリクエストに付与して送信する。
+
+```
+Cookie: SID=31d4d96e407aad42
+```
+
+Webサーバ`example.jp`では、このHTTPクッキーを基にセッションIDテーブルを検索し、どのユーザからのリクエストかを判断する。
 
 - 実現方法
     - セッション一つ一つに固有のID（セッションID）を振る
