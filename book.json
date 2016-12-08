@@ -2,5 +2,5 @@
   "pdf": {
     "fontFamily": "IPAGothic"
   },
-  "plugins": ["katex"]
+  "plugins": ["katex", "numbered-headings"]
 }
