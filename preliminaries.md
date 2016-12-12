@@ -4,15 +4,13 @@
 
 ## Web
 
-> The Web is intended to be an Internet-scale distributed hypermedia system - [Architectural Styles and the Design of Network-based Software Architectures](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+> The Web is intended to be an Internet-scale distributed hypermedia system - [Roy Fielding, “Architectural Styles and the Design of Network-based Software Architectures”](http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
 * インターネット上で提供されるサービスの一つ
   * リンクによって互いに関連付けられ、インターネット上に分散して配置された多数のページ（またはデータ）
   * サーバ・クライアント型のシステム
     * サーバ：ページやデータが配置されるコンピュータ
     * クライアント：ページやデータを取得するコンピュータ
-
-
 
 ### 歴史
 
@@ -45,7 +43,6 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
 * 分散システム（Distributed System）
   * 複数のコンピュータを組み合わせて、処理を分散させる情報システム
 
-
 その他、HTML以外のデータ記述形式、暗号化技術（公開鍵暗号）なども使われている。Webは、極めて多様な技術を集めて構築された情報システムであると言える。
 
 ## インターネット（the Internet）
@@ -54,7 +51,6 @@ Webの原型は、1965年にTed Nelsonによって提案されたハイパーテ
   * TCP: Transmission Control Protocol
   * UDP: User Datagram Protocol
   * IP: Internet Protocol
-
 
 ### 歴史
 
