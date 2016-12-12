@@ -5,10 +5,10 @@ h1:before, h2:before, h3:before {
 
 h4:before {
   color: #aaa;
-  width: 80px;
+  width: 85px;
 }
 
 h5:before {
   color: #aaa;
-  width: 90px;
+  width: 100px;
 }
