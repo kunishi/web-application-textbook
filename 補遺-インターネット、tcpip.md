@@ -1,4 +1,4 @@
-# 補遺: インターネット（the Internet）
+# 補遺: インターネット（the Internet） {#internet}
 
 * TCP/IP（またはUDP/IP）を標準プロトコルとする世界的規模のネットワーク
   * TCP: Transmission Control Protocol
