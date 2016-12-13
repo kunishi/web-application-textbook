@@ -1,7 +1,4 @@
 {
   "language": "ja",
-  "pdf": {
-    "fontFamily": "IPAGothic"
-  },
   "plugins": ["katex", "numbered-headings"]
 }
