@@ -1,5 +1,6 @@
 # Summary
 
+* [Introduction](README.md)
 * [はじめに](introduction.md)
 * [Webを支える技術](preliminaries.md)
 * [Webアーキテクチャ](web-architecture.md)
@@ -12,4 +13,5 @@
 * [Webアプリケーションのセキュリティ](security-on-webapp.md)
 * [Webアクセシビリティ](web-accessibility.md)
 * [Webアプリケーションの性能向上](performance-tuning-on-webapp.md)
+* [補遺: 文字の扱い](文字コード.md)
 
