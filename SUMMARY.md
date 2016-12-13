@@ -14,4 +14,5 @@
 * [Webアクセシビリティ](web-accessibility.md)
 * [Webアプリケーションの性能向上](performance-tuning-on-webapp.md)
 * [補遺: 文字の扱い](文字コード.md)
+* [補遺: インターネット、TCP\/IP](補遺-インターネット、tcpip.md)
 
