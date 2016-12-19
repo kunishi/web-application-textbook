@@ -178,5 +178,49 @@ Webサーバ`example.jp`では、このHTTPクッキーを基にセッションI
 > 3. サーバ側からログイン状態を無効にする手段が存在しないこと
 > 4. ホストをまたがったシングルサインオンが実現できないこと
 
+## JSON Web Token \(JWT\)
 
+HTTPクッキーによる認証の変形として、**JSON Web Token** \(JWT, [RFC7519](https://tools.ietf.org/html/rfc7519)\)という技術がある。HTTPクッキーとは異なり、サーバがセッションIDに相当するデータを保存しておく必要がない、という点で、最近注目されている技術である。
 
+JWTは、JSON形式で表現されたデータに電子署名をつけるための技術であるJSON Web Signature(JWS, [RFC7515](https://tools.ietf.org/html/rfc7515))を元にユーザ認証などの目的で利用しやすくしたもので、技術的基盤は同じである。以下ではJWTの用語を用いて説明を行う。
+
+JWTは3つのBase64エンコードされたデータを . で繋げた形の文字列である。
+
+```
+eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9
+.
+eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ
+.
+dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+```
+
+1つ目はJWTで用いられている暗号方式などを含んだJSONデータであり、**JWTヘッダ**と呼ばれる。上の例では、以下のJSONデータ（JWT形式のデータをHMAC-SHA256暗号方式で処理した、という意味）をBase64エンコードしている。
+
+``` json
+{"typ":"JWT",
+ "alg":"HS256"}
+```
+
+2つ目は認証情報などを含んだJSONデータをBase64エンコードしたもので、**JWTクレームセット**と呼ばれる。上の例では、以下のJSONデータ（ユーザ`joe`を`http://example.com/is_root`で認証した、有効期限は`1300819380`）をBase64エンコードしている。
+
+``` json
+{"iss":"joe",
+ "exp":1300819380,
+ "http://example.com/is_root":true}
+```
+
+3つ目はJWTヘッダとJWTクレームセットを . でつないだ文字列に、JWTヘッダで指定されたアルゴリズムを使って行った電子署名である。上の例では、以下の文字列に対してHMAC-SHA256で電子署名を行なっている。
+
+```
+eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9
+.
+eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19yb290Ijp0cnVlfQ
+```
+
+JWTを用いた認証の仕組みを述べる。まずクライアントは、ユーザIDとパスワードをサーバに何らかの方法で送信し、サーバはこれらの情報を元にユーザ認証を行う。この部分はHTTPクッキーの場合と同じである。
+
+認証に成功すると、サーバは（認証に成功した）ユーザIDをJWTクレームセットに含むJWTを生成し、クライアントに返す。
+
+クライアントは返ってきたJWTを保存しておき、以降のリクエストでは、このJWTを（HTTPクッキーと同様）一緒にサーバに送信する。サーバは、送られてきたJWTの電子署名の正当性を検証することで、JWTが改ざんされていないこと、すなわち認証されたユーザからの正当なリクエストであることを確認する。
+
+電子署名の正当性の検証は、JWTに含まれるデータだけで行えるので、HTTPクッキーの場合とは異なり、セッションIDに相当するものをサーバが保存しなくて済む、ということになる。
