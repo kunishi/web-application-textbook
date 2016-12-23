@@ -1,4 +1,4 @@
-# HTTP(Hypertext Transfer Protocol)
+# HTTP\(Hypertext Transfer Protocol\)
 
 ## プロトコルの概要
 
@@ -11,7 +11,6 @@
   * 1回のHTTP通信では1つのURIのデータしか取得することができない
   * 多数のデータを並行して取得するには、TCP接続を複数確立する必要がある
   * 注：次世代HTTPでは、この辺りが変更される可能性が大。詳細は後述。
-
 
 ### クライアント側の処理手順
 
@@ -47,7 +46,7 @@
 
 ユーザ認証など、ステートレスにできない用途もあるが、極力アプリケーション状態の保存は最小に留める、という思想でアプリケーションが設計されることが多い。
 
-論理的には、URIで指定された資源に対して操作(HTTPメソッド)を送り、サーバ側で対応する操作をした結果（成功・失敗、成功の場合は操作結果、失敗の場合はその原因など）をクライアントに返す。
+論理的には、URIで指定された資源に対して操作\(HTTPメソッド\)を送り、サーバ側で対応する操作をした結果（成功・失敗、成功の場合は操作結果、失敗の場合はその原因など）をクライアントに返す。
 
 ## HTTPメソッド
 
@@ -57,17 +56,19 @@
     * 例：`GET http://blog.example.com/1` …URIで指定された記事の内容を取得する
   * POST: 指定したURIに対する子資源の作成など
     * 例：`POST http://blog.example.com/` … URI `http://blog.example.com/` に新しい投稿という子資源を作成する
-  * PUT: 資源の更新
-    * 例：`PUT http://blog.example.com/1` … URI `http://blog.example.com/1`  のデータを修正する
+  * PUT: 資源の置き換え
+    * 例：`PUT http://blog.example.com/1` … URI `http://blog.example.com/1`  のデータ全体を置き換える
   * DELETE: 資源の削除
     * 例：`DELETE http://blog.example.com/1` …URI `http://blog.example.com/1` を削除する
-* このように、HTTPメソッドの`GET`, `POST`, `PUT`, `DELETE`は、データに対する代表的な操作であるCRUD(create, read, update, delete)に対応している。
+  * PATCH: 資源の一部更新
+    * 例：`PATCH http://blog.example.com/1` … URI `http://blog.example.com/1` のデータの一部を更新する
+* このように、HTTPメソッドの`GET`, `POST`, `PUT/PATCH`, `DELETE`は、データに対する代表的な操作であるCRUD\(create, read, update, delete\)に対応している。
 * そのほかのHTTPメソッド
-  * `HEAD`, `OPTIONS`, `TRACE`, `CONNECT`, `PATCH`
+  * `HEAD`, `OPTIONS`, `TRACE`, `CONNECT`
   * `PATCH`は2010年に発行された[RFC5789](https://tools.ietf.org/html/rfc5789)で新しく追加されたHTTPメソッドである
-* HTMLフォームから発行できるHTTPメソッドはGET, POSTのみ
+* HTMLフォームから発行できるHTTPメソッドは`GET`, `POST`のみ
   * これ以外のメソッドを発行する場合は何らかのプログラムを通さなければならない
-  * PUT, DELETEをPOSTで代用することもある
+  * `PUT`, `PATCH`, `DELETE`を`POST`で代用することもある
 
 ## ステータスコード
 
@@ -107,7 +108,6 @@
 ```
 GET /index.html HTTP/1.1
 Host: www.example.com:8000
-
 ```
 
 * リクエストライン：メッセージの1行目。HTTPメソッド、リクエストURI、プロトコルバージョン
@@ -199,7 +199,6 @@ Content:Type: text/html
 ```
 GET /?q=foo HTTP/1.1
 Host: example.com
-
 ```
 
 ただし、実装上、URIの長さには2,000文字などの上限が存在するので、上限を越えるような長いURIにアクセスする場合は、次に示すPOSTパラメータで代用することがある。
@@ -210,7 +209,7 @@ GETパラメータ以外に、POSTメソッドを使ってサーバにパラメ�
 
 例えば、`http://example.com/login`に次のようなHTMLで表されるログインフォームがあったとしよう。
 
-``` 
+```
 <form action="POST" target="/list">
   ユーザID: <input type="text" name="id">
   パスワード: <input type="password" name="pass">
@@ -218,7 +217,7 @@ GETパラメータ以外に、POSTメソッドを使ってサーバにパラメ�
 </form>
 ```
 
-ブラウザで表示させると次のようになるだろう。
+ブラウザで表示させると次のようになるだろう。  
 ![](test.png)
 
 ユーザIDの欄に `foo` を、パスワードの欄に `bar` をそれぞれ入力して「送信」ボタンをクリックしたとする。すると、次のように、URI `http://example.com/list` に`POST`メソッドが発行されることになる。
@@ -239,9 +238,9 @@ id=foo&pass=bar
 
 HTTPはTCP/IP上に実装されるアプリケーション層のプロトコルであるから、HTTPの通信を始める前にTCP/IP通信路を確立しなければならない。すなわち、いわゆるTCP/IPの[3ウェイ・ハンドシェイク](https://ja.wikipedia.org/wiki/3%E3%82%A6%E3%82%A7%E3%82%A4%E3%83%BB%E3%83%8F%E3%83%B3%E3%83%89%E3%82%B7%E3%82%A7%E3%82%A4%E3%82%AF)を行わなければならない。これは比較的時間がかかる処理である。
 
-Webページは、ページの構造を記述するHTMLだけでなく、ページ中で使用されている画像、見た目（スタイル）を定義するCSS（Cascading Stylesheet)、当該Webページ上で動作するプログラムを記述するJavaScriptなど、多数のファイルから構成されており、通常、これらは全て別々のHTTP接続でサーバからクライアントに送られる（[http2 explained](https://www.gitbook.com/book/bagder/http2-explained/details)によれば、2015年現在、1ページを表示するのに平均100個のデータを必要としている）。したがって、これらのファイルを取得するたびにTCP/IPハンドシェイクを行うと、非常に時間がかかってしまうことは想像に難くない。
+Webページは、ページの構造を記述するHTMLだけでなく、ページ中で使用されている画像、見た目（スタイル）を定義するCSS（Cascading Stylesheet\)、当該Webページ上で動作するプログラムを記述するJavaScriptなど、多数のファイルから構成されており、通常、これらは全て別々のHTTP接続でサーバからクライアントに送られる（[http2 explained](https://www.gitbook.com/book/bagder/http2-explained/details)によれば、2015年現在、1ページを表示するのに平均100個のデータを必要としている）。したがって、これらのファイルを取得するたびにTCP/IPハンドシェイクを行うと、非常に時間がかかってしまうことは想像に難くない。
 
-そこでHTTPには、複数のHTTP接続を1つのTCP/IPセッション上で行う、キープアライブ(Keep alive)という機能が含まれている。HTTP/1.1では、これがデフォルトの挙動になった。クライアント、サーバのいずれかから `Connection: close` をヘッダに入れて送信するまで、同一のTCP/IPセッションを使用する。
+そこでHTTPには、複数のHTTP接続を1つのTCP/IPセッション上で行う、キープアライブ\(Keep alive\)という機能が含まれている。HTTP/1.1では、これがデフォルトの挙動になった。クライアント、サーバのいずれかから `Connection: close` をヘッダに入れて送信するまで、同一のTCP/IPセッションを使用する。
 
 ```
 HTTP/1.1 200 Ok
@@ -268,7 +267,7 @@ HTTP/2は、HTTP/1.1との互換性を保ちつつ、上で述べたレイテン
 
 これに付随して、次のような機能が用意されている。
 
-* ヘッダー圧縮：HTTPはステートレスな通信であるため、ヘッダが冗長になり、ヘッダのデータ量が大きくなる。そこでヘッダに特化した圧縮方式である`HPACK`が用意されている([RFC7541](http://www.rfc-editor.org/rfc/rfc7541.txt))。
+* ヘッダー圧縮：HTTPはステートレスな通信であるため、ヘッダが冗長になり、ヘッダのデータ量が大きくなる。そこでヘッダに特化した圧縮方式である`HPACK`が用意されている\([RFC7541](http://www.rfc-editor.org/rfc/rfc7541.txt)\)。
 * サーバープッシュ：クライアントからのリクエストなしに、サーバからクライアントにデータを送信する機能。例えば、あるHTMLファイル`index.html`をブラウザで表示させるのに画像`logo.png`が必要だとわかっていた場合、`index.html`へのリクエストがクライアントから送られてきた時点で`logo.png`もプッシュし、クライアントがこれをキャッシュに入れておくと、レイテンシが改善する可能性がある。
 * ストリームの優先度：クライアントからサーバに、どのストリームを優先して送信してほしいかを伝えることができる。フレームの一つである`PRIORITY`フレームを用いる。
 
@@ -278,7 +277,7 @@ HTTP/1.1がこれだけ普及している現在、短期間にHTTP/2への移行
 
 通信相手のクライアント・サーバがHTTP/2に対応しているか、通信が始まるまではわからないから、まずHTTP/1.1で通信を始め、HTTP/2で通信できるならHTTP/2に切り替える（プロトコルアップグレード）、というのが当面妥当な方法になると考えられる。
 
-[RFC7540](https://tools.ietf.org/html/rfc7540)には、プロトコルアップグレードの方法が2つ示されている。HTTPSの場合は、TLSにもともと用意されているプロトコル調整の仕組みであるALPN(Application Layer Protocol Negotiation)を使う。一方HTTPの場合は、もともとHTTP/1.1に用意されていた（がほとんど使われていなかった）`Upgrade`ヘッダを使う。
+[RFC7540](https://tools.ietf.org/html/rfc7540)には、プロトコルアップグレードの方法が2つ示されている。HTTPSの場合は、TLSにもともと用意されているプロトコル調整の仕組みであるALPN\(Application Layer Protocol Negotiation\)を使う。一方HTTPの場合は、もともとHTTP/1.1に用意されていた（がほとんど使われていなかった）`Upgrade`ヘッダを使う。
 
 以下、RFC7540に示されている、`Upgrade`ヘッダによるプロトコルアップグレードの例である。まずクライアントから次のように`Upgrade`ヘッダをつけたリクエストが送信される。ここで`HTTP2-Settings`ヘッダには、HTTP/2のフレームの一種である`SETTINGS`フレームのデータ本体（ペイロード、payload）がBase64エンコーディングした形でつけられる。
 
@@ -288,7 +287,6 @@ Host: server.example.com
 Connection: Upgrade, HTTP2-Settings
 Upgrade: h2c
 HTTP2-Settings: <base64url encoding of HTTP/2 SETTINGS payload>
-
 ```
 
 サーバがHTTP/2に対応している場合は、サーバからも`Upgrade`ヘッダのついたレスポンスが返り、以降はHTTP/2による通信が行われる。
@@ -310,4 +308,6 @@ Content-Type: text/html
 
 ...
 ```
+
+
 
