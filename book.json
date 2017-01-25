@@ -1,4 +1,7 @@
 {
   "language": "ja",
-  "plugins": ["katex", "numbered-headings"]
+  "plugins": ["katex", "numbered-headings"],
+  "pdf": {
+    "fontFamily": "IPAMincho"
+  }
 }
